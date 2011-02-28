@@ -1,0 +1,126 @@
+/*
+
+INFO:     Mobile stylesheet
+
+*/
+
+body #wrapper {
+    width: 320px;
+}
+
+/* typography */
+
+body h2 {
+    margin: 0 0 7px 0;
+}
+
+body .elevator {
+    font-size: 14px;
+    line-height: 21px;
+    text-indent: -6px;
+    width: 300px;
+}
+
+body .right {
+    text-align: left;
+}
+
+/* columns */
+
+body #grid {
+    width: 320px;
+    margin-left: -160px;
+}
+
+body .tripleColumn,
+body .doubleColumn {
+    width: 300px;
+}
+
+body .tripleColumn img,
+body .doubleColumn img {
+    max-width: 300px;
+}
+
+/* content */
+
+body header a.home {
+    text-align: left;
+}
+
+    body a.more {
+        font-size: 12px;
+    }
+    
+body section#about {
+    padding: 0 0 20px;
+}
+
+/* venn diagram */
+
+body section#vennDiagram {
+    height: auto;
+}
+
+body #circleWrap {
+    margin: 0 8px;
+}
+
+    body .circle {
+        top: auto;
+        position: relative;
+        display: block;
+        float: left;
+        text-align: left;
+        line-height: 36px;
+        width: 36px;
+        height: 36px;
+        margin: 0 2px;
+        color: transparent;
+        overflow: hidden;
+    }
+    
+    body .circle.selected {
+        width: 180px;
+        text-indent: 0;
+        text-align: center;
+        color: #fff;
+        top: auto;
+    }
+
+    body .circle.collaboration {
+        left: auto;
+    }
+    
+    body .circle.standards {
+        left: auto;
+    }
+    
+    body .circle.messaging{
+        right: auto;
+    }
+    
+    body .circle.media {
+        right: auto;
+    }
+    
+body .singleColumn.second {
+    display: none;
+}
+    
+body section.post p {
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0 0 21px 0;
+}
+    
+body footer p {
+    text-align: left;
+}
+    
+    
+    
+    
+    
+    
+    

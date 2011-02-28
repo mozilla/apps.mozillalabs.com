@@ -1,0 +1,91 @@
+/*
+
+INFO:     Tablet stylesheet
+
+*/
+
+body #wrapper {
+    width: 640px;
+}
+
+/* typography */
+
+body h2 {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+body .elevator {
+    font-size: 18px;
+    line-height: 24px;
+    text-indent: -6px;
+    width: 460px;
+}
+
+/* columns */
+
+body #grid {
+    width: 640px;
+    margin-left: -320px;
+}
+
+body .tripleColumn {
+    width: 620px;
+}
+
+body .tripleColumn img {
+    max-width: 620px;
+}
+
+/* content */
+
+body header nav {
+    width: 300px;
+}
+    body a.more {
+        display: block;
+        text-indent: 0;
+    }
+
+/* venn diagram */
+
+body section#vennDiagram {
+    height: 280px;
+}
+
+    body .circle {
+        width: 200px;
+        height: 200px;
+        display: block;
+        text-align: center;
+        line-height: 200px;
+        top: 60px;
+    }
+    
+    body .circle.selected {
+        top: 60px;
+    }
+    
+    body .circle.collaboration {
+        left: 0;
+    }
+    
+    body .circle.standards {
+        left: 145px;
+    }
+    
+    body .circle.messaging {
+        right: 145px;
+    }
+    
+    body .circle.media {
+        right: 0;
+    }
+    
+body .singleColumn.third {
+    display: none;
+}
+    
+body footer ul {
+    width: 300px;
+}
