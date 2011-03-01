@@ -1,0 +1,65 @@
+.singleColumn img {
+    height: 128px;
+    width: 128px;
+    float: left;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#contentWrap .singleColumn {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    background-color: #ddd9cb;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding: 0;
+    position: relative;
+}
+
+#contentWrap .singleColumn div.name {
+    font-size: 1.2em;
+    margin-top: 4em;
+    margin-left: .4em;
+    width: 150px;
+}
+
+#contentWrap .singleColumn div.attribution {
+    font-size: .8em;
+    margin-left: .6em;
+    width: 150px;
+}
+
+#contentWrap .singleColumn div {
+    float: left;
+}
+
+#contentWrap .singleColumn .button {
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 20%;
+    background-color: #999;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: none;
+    text-align: center;
+}
+
+#contentWrap .singleColumn .installed {
+    background-color: #ff9999;
+}
+
+#contentWrap .singleColumn .installable {
+    background-color: #99ff99;
+}
+
+#contentWrap div.singleColumn:hover .button {
+    display: block;
+}
+

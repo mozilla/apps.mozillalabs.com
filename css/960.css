@@ -163,7 +163,6 @@ body.home h3 a {
     left: 50%;
     margin-left: -480px;
     display: none;
-    background-image: url("../i/grid.png");
     z-index: 100;
 }
 
