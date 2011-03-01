@@ -15,6 +15,8 @@ while line:
         manifest = u.read()
         o = urlparse.urlparse(url)
         origin = o.scheme + "://" + o.netloc;
+        if manifest.startswith("\xef\xbb\xbf"):
+            manifest = manifest[3:]
         db[origin] = json.loads(manifest)
         db[origin]["src_url"] = url
     except (ValueError, RuntimeError) as e:
