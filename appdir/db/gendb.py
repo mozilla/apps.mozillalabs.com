@@ -2,6 +2,7 @@
 
 import sys
 import urllib2
+import urlparse
 import json
 
 db = { }
@@ -12,7 +13,9 @@ while line:
     try:
         u = urllib2.urlopen(url);
         manifest = u.read()
-        db[url] = json.loads(manifest)
+        o = urlparse.urlparse(url)
+        origin = o.scheme + "://" + o.netloc;
+        db[origin] = json.loads(manifest)
     except (ValueError, RuntimeError) as e:
         print >> sys.stderr, "WARNING: Can't read manifest, skipping '%s'" % url
     line = sys.stdin.readline()
