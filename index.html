@@ -5,81 +5,114 @@
     <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
     <link rel="stylesheet" href="css/960.css" type="text/css" media="screen">
     <link rel="shortcut icon" type="image/ico" href="i/favicon.ico">
+    
+    <script src="js/jquery.1.5.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="js/jquery.isotope.min.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="js/labs.js" type="text/javascript" charset="utf-8"></script>
+    
 </head>
 
-<body class="messaging">
+<body class="apps">
     <div id="grid"></div>
     <div id="wrapper">
     
-        <header class="clearfix textShadow">
+        <header class="clearfix ">
             <a class="home" href="#"><img src="i/mozillaLogo.png" alt="Mozilla"></a>
         </header>
         
-        <section id="about" class="clearfix textShadow">
+        <section id="about" class="clearfix ">
             <div class="doubleColumn">
                 <h1>Mozilla : Web Applications</h1>
                 <article class="elevator">
-                    <p>Web Applications are applications that run on <u>any device</u>, and can be distributed through <u>any store</u> or <u>directly</u> by the developer.</p>
+                    <p>Web Applications are applications that run on <u style="color:#CF32A5">any device</u>, and can be distributed through <u style="color:#9A32CF">any store</u> or <u style="color:#4732CF">directly</u> by the developer.</p>
                 </article>
+                <div class="videoToggle">
+                    <button class="play sans"><img src="i/video.png"> Watch the video</button>
+                </div>
             </div>
         </section>
 
-        <hr>
+        <hr class="shadow">
         
-        <section id="projectContent" class="clearfix textShadow">
-            <div id="contentWrap">
-                <div class="singleColumn contentBlock">
-                    <img src="i/300.png">
+        <section id="video" class="clearfix">
+            <div class="tripleColumn videos">
+                <video class="mainVideo" controls="controls">
+                    <source type='video/webm' src="v/neueMail.webm">
+                    <source type='video/mp4' src="v/neueMail.mov">
+                </video>
+            </div>
+        </section>
+        
+        <section id="projectContent">
+            <div id="contentWrap" class="clearfix">
+            
+                <div class="contentBlock clearfix">
                     <h3 class="sans">For Users</h3>
-                    <p>Web browsers are adding capabilities that allow web applications to create richer, more integrated experiences. Mozilla has created a <a href="#">gallery of user interface concepts</a> to show how applications can enhance your web environment.</p>
+                    <div class="singleColumn">
+                        <p>Web browsers are adding capabilities that allow web applications to create richer, more integrated experiences.</p>
+                    </div>
+                    <div class="singleColumn">
+                        <p>Mozilla has created a <a href="#">gallery of user interface concepts</a> to show how applications can enhance your web environment.</p>
+                    </div>
                 </div>
-               <div class="singleColumn contentBlock">
-                    <img src="i/300.png">
+                
+                <div class="contentBlock clearfix">
                     <h3 class="sans">For the Adventurous</h3>
-                    <p>For users who don't mind running beta-quality code, we have a number of prototypes that you can try out:</p>
-					<p><a href="#">Firefox extension</a>: Adds application management and launch features to Firefox</p>
-					<p><a href="#">Chrome extension:</a> Adds application management and launch features to Chrome</p>
-					<p><a href="#">Android Sync app:</a> Synchronizes your applications to any Android mobile</p>
+                    <div class="singleColumn">
+                        <p>For users who don't mind running beta-quality code, we have a number of prototypes that you can try out:</p>
+                    </div>
+                    <div class="singleColumn">
+                        <ul>
+        					<li class="lab"><a href="#">Firefox extension</a>: Adds application management and launch features to Firefox
+        					<li class="lab"><a href="#">Chrome extension:</a> Adds application management and launch features to Chrome
+        					<li class="lab"><a href="#">Android Sync app:</a> Synchronizes your applications to any Android mobile
+    					</ul>
+    				</div>
                 </div>
-                <div class="singleColumn contentBlock">
-                    <img src="i/300.png">
+                
+                <div class="contentBlock clearfix">
                     <h3 class="sans">For Developers</h3>
-                    <p>Web Applications are built using HTML5, and can run in any modern browser or mobile OS. Read on to learn how to build them:</p>
-					<p>How to <a href="#">create a web application</a></p>
-					<p>How to <a href="#">create a web application directory or store</a></p>
+                    <div class="singleColumn">
+                        <p>Web Applications are built using HTML5, and can run in any modern browser or mobile OS. Read on to learn how to build them:</p>
+                    </div>
+                    <div class="singleColumn">
+                        <ul>
+    					   <li class="dev">How to <a href="#">create a web application</a>
+    					   <li class="dev">How to <a href="#">create a web application directory or&nbsp;store</a>
+    				    </ul>
+    				</div>
                 </div>
             </div>
         </section>
         
         <hr>
         
-        <section id="blog" class="textshadow clearfix">
+        <section id="blog" class=" clearfix">
             <div class="tripleColumn">
                 <h2>&mdash;Latest News <span class="caption"><a href="#">visit the blog</a></span></h2>
             </div>
             <div class="singleColumn post first">
 
-                <h3 class="sans blogTitle rss">Raindrop 0.1 released</h3>
+                <h3 class="sans blogTitle rss">App Store is Live!</h3>
                 <span class="caption">Jan 29th, 2011</span>
-                <p>We've just released the 0.1 version of Raindrop. Here are some notes that you should be (...)</p>
+                <p>The App store is live with over 50 new applications to try out (...)</p>
             </div>
             <div class="singleColumn post second">
-                <h3 class="sans blogTitle rss">Raindrop Goals</h3>
+                <h3 class="sans blogTitle rss">Why an App store?</h3>
                 <span class="caption">Jan 10th, 2011</span>
-
-                <p>Some high level goals for this second iteration of Raindrop (...)</p>
+                <p>It's 2011 and and we're thinking it's time to announce our new (...)</p>
             </div>
             <div class="singleColumn post third">
-                <h3 class="sans blogTitle rss">Planning and 2011</h3>
+                <h3 class="sans blogTitle rss">An open market</h3>
                 <span class="caption">Dec 14, 2010</span>
-                <p>We have some big plans for 2011, and especially for our webmail (...)</p>
+                <p>With the advent of the Mac App store we're wondering if there(...)</p>
             </div>
 
         </section>
         
         <hr>
         
-        <section id="people" class="textShadow clearfix">
+        <section id="people" class=" clearfix">
             <div class="tripleColumn">
                 <h2>&mdash;the Web App Team</h2>
             </div>
@@ -118,20 +151,20 @@
                 </li>
             </ul>
         </section>
-                
-        <footer class="clearfix sans">
-            <ul>
-                <li><a href="http://groups.google.com/group/mozilla-labs">Forum</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="http://www.mozilla.com/en-US/privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="http://www.mozilla.com/en-US/about/legal.html">Legal Notices</a></li>
-            </ul>
-            <div class="singleColumn">
-                <p>Copyright &copy; 2011 Mozilla. All rights reserved.</p>
-            </div>
-        </footer>
     
     </div> <!-- wrapper -->
+    
+    <footer class="clearfix sans">
+        <ul>
+            <li><a href="http://groups.google.com/group/mozilla-labs">Forum</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="http://www.mozilla.com/en-US/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="http://www.mozilla.com/en-US/about/legal.html">Legal Notices</a></li>
+        </ul>
+        <div class="singleColumn">
+            <p>Copyright &copy; 2011 Mozilla. All rights reserved.</p>
+        </div>
+    </footer>
     
 </body>
 </html>

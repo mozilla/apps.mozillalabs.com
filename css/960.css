@@ -9,6 +9,7 @@ INFO:     Mozilla Labs 2011 mockup to be
 
 @import url("640.css") screen and (max-width: 960px);
 @import url("320.css") screen and (max-width: 640px);
+@import url("colors.css");
 
 * {
     margin: 0;
@@ -21,7 +22,7 @@ INFO:     Mozilla Labs 2011 mockup to be
 
 body {
     font-family: "Georgia", Times New Roman, Times, serif;
-    background-color: #fffbed;
+    background-color: #fff;
     font-size: 14px;
     line-height: 21px;
     color: #222;
@@ -37,7 +38,6 @@ h1 {
     font-size: 24px;
     line-height: 32px;
     font-weight: normal;
-    margin: 0 0 21px 0;
 }
 
 h2 {
@@ -55,11 +55,13 @@ hr {
     margin: 0 10px;
     border: none;
     height: 1px;
-    background-color: #D1CDC2;
-    
-    -webkit-box-shadow: 0 1px 0 #fff;
-       -moz-box-shadow: 0 1px 0 #fff;
-            box-shadow: 0 1px 0 #fff;
+    background-color: #bbb;
+}
+
+hr.shadow {
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+       -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
 }
 
 .right {
@@ -74,14 +76,11 @@ hr {
     font-family: "Georgia", Times New Roman, Times, serif;
 }
 
-.textShadow {
-    text-shadow: 1px 1px 0 #fff;
-}
-
 .elevator {
-    font-size: 24px;
-    line-height: 32px;
-    font-style: italic;
+    font-size: 21px;
+    line-height: 28px;
+    margin-top: 21px;
+    padding: 0 160px 0 0;
 }
 
 .aboutQuote {
@@ -92,6 +91,16 @@ hr {
     font-size: 14px;
     font-style: italic;
     line-height: 0;
+}
+
+.cssColumn {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+            
+    -webkit-column-gap: 20px;
+       -moz-column-gap: 20px;
+            column-gap: 20px;
 }
 
 .rss {
@@ -116,44 +125,6 @@ a img {
     border: none;
 }
 
-body.home a,
-body.home h1, 
-body.home h2 {
-    color: rgba(150, 150, 150, 1);
-}
-
-body.collaboration a,
-body.collaboration h1, 
-body.collaboration h2 {
-    color: rgba(255,160,0,1);
-}
-
-body.standards a,
-body.standards h1, 
-body.standards h2 {
-    color: #de0000;
-}
-
-body.messaging a,
-body.messaging h1, 
-body.messaging h2 {
-    color: rgba(0,146,222,1);
-}
-
-body.media a,
-body.media h1, 
-body.media h2 {
-    color: rgba(90,179,90,1);
-}
-
-body.messaging h3 a,
-body.standards h3 a,
-body.collaboration h3 a,
-body.media h3 a,
-body.home h3 a {
-    color: #222;
-}
-
 /* columns */
 
 #grid {
@@ -163,6 +134,7 @@ body.home h3 a {
     left: 50%;
     margin-left: -480px;
     display: none;
+    background-image: url("../i/grid.png");
     z-index: 100;
 }
 
@@ -178,7 +150,8 @@ body.home h3 a {
     width: 300px;
 }
 
-.singleColumn img {
+.singleColumn img,
+.singleColumn video {
     max-width: 300px;
     height: auto;
 }
@@ -187,7 +160,8 @@ body.home h3 a {
     width: 620px;
 }
 
-.doubleColumn img {
+.doubleColumn img,
+.doubleColumn video {
     max-width: 620px;
     height: auto;
 }
@@ -196,7 +170,8 @@ body.home h3 a {
     width: 940px;
 }
 
-.tripleColumn img {
+.tripleColumn img,
+.tripleColumn video {
     max-width: 940px;
     height: auto;
 }
@@ -210,15 +185,13 @@ body.home h3 a {
 
 header {
     display: block;
-    padding: 20px 0;
+    padding: 20px 0 0;
+    text-align: right;
 }
 
     header a.home {
         opacity: 0.2;
-        width: 300px;
         margin: 0 10px;
-        float: right;
-        text-align: right;
         background-color: transparent;
         
         -webkit-transition: opacity 0.2s ease-out;
@@ -255,7 +228,16 @@ section {
 
 section#about {
     padding: 10px 0 30px;
+    background-color: #fff;
+    min-height: 200px;
+    background-image: url("../i/header.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
 }
+    
+    .videoToggle {
+        margin: 21px 0 0;
+    }
     
     a.more {
         cursor: pointer;
@@ -264,147 +246,35 @@ section#about {
     }
     
     a.return {
-        display: block;
-        position: absolute;
-        margin-top: -20px;
         font-style: italic;
     }
 
-/* venn diagram : homepage styles */
-
-section#vennDiagram {
-    height: 280px;
-    overflow: hidden;
-}
-
-section#vennDiagram a.more {
-    display: none;
-    line-height: 0;
-}
-
-    .circle {
-        top: 70px;
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        display: block;
-        text-align: center;
-        line-height: 300px;
-        color: #fff;
-        
-        -webkit-border-radius: 1000px;
-           -moz-border-radius: 1000px;
-                border-radius: 1000px;
-                
-        -webkit-transition: all 0.2s ease-out;
-           -moz-transition: all 0.2s ease-out;
-                transition: all 0.2s ease-out;
-    }
-    
-    .circle:hover {
-        z-index: 3;
-        cursor: pointer;
-    }
-    
-    .circle.selected {
-        z-index: 2;
-        font-weight: bold;
-        top: 60px;
-    }
-    
-    .circle.collaboration {
-        left: 0px;
-        background-color: rgba(255,160,0,0.8);
-    }
-    
-    .circle.collaboration:hover,
-    .circle.collaboration.selected {
-        background-color: rgba(255,160,0,1);
-    }
-    
-    .circle.standards {
-        left: 220px;
-        background-color: rgba(228,63,63,0.8);
-    }
-    
-    .circle.standards:hover,
-    .circle.standards.selected {
-        background-color: rgba(228,63,63,1);
-    }
-    
-    .circle.messaging {
-        right: 220px;
-        background-color: rgba(0,146,222,0.8);
-    }
-    
-    .circle.messaging:hover,
-    .circle.messaging.selected {
-        background-color: rgba(0,146,222,1);
-    }
-    
-    .circle.media {
-        background-color: rgba(90,179,90,0.8);
-        right: 0;
-    }
-    
-    .circle.media:hover,
-    .circle.media.selected {
-        background-color: rgba(90,179,90,1);
-    }
-
-section#projects {
-    padding: 20px 0;
-}    
-
-ul#projectList,
-ul#graduateProjectList,
-ul#retiredProjectList,
-ul#teamList {
-    list-style-type: none;
-    width: 100%;
-    display: block;
-    float: left;
-}
-    
-    ul#projectList li,
-    ul#graduateProjectList li,
-    ul#retiredProjectList li {
-        padding: 0 0 0 20px;
-        margin: 5px 10px;
-    }
-    
-    ul#projectList li.collaboration {
-        border-left: 10px solid rgba(255,160,0,0.8);
-    }
-    
-    ul#projectList li.standards {
-        border-left: 10px solid rgba(228,63,63,0.8);
-    }
-    
-    ul#projectList li.messaging {
-        border-left: 10px solid rgba(0,146,222,0.8);
-    }
-    
-    ul#projectList li.media {
-        border-left: 10px solid rgba(90,179,90,0.8);
-    }
-    
-    ul#graduateProjectList li.graduate {
-        border-left: 10px solid rgba(150,150,150,0.8);
-    }
-    
-    ul#retiredProjectList li.retired {
-        border-left: 10px solid rgba(220,220,220,0.8);    
-    }
-    
-    ul#projectList p,
-    ul#graduateProjectList p,
-    ul#retiredProjectList p,
-    #blog p {
-        color: #918F87;
-    }
-
 /* project page styles */
+
+#video {    
+    position: relative;
+    padding: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    
+    -webkit-transition: height 0.4s, opacity 1s 0.4s cubic-bezier(0.0, 0.0, 0.0, 1.0);
+       -moz-transition: height 0.4s, opacity 1s 0.4s cubic-bezier(0.0, 0.0, 0.0, 1.0);
+            transition: height 0.4s, opacity 1s 0.4s cubic-bezier(0.0, 0.0, 0.0, 1.0);
+}
+
+#video.visible {
+    opacity: 1;
+    height: 549px;
+}
+
+#video .videos {
+    padding: 20px 0 0;
+}
+
+#video .mainVideo {
+    display: block;
+}
 
 button {
     background-color: #fff;
@@ -419,10 +289,6 @@ button {
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
-            
-    -webkit-box-shadow: 1px 1px 0 #fff;
-       -moz-box-shadow: 1px 1px 0 #fff;
-            box-shadow: 1px 1px 0 #fff;
 }
 
 button:active {
@@ -433,9 +299,13 @@ button:active {
             box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
 }
 
+button img {
+    vertical-align: bottom;
+}
+
 #actions {
-    width: 500px;
-    margin: 20px 0 0;
+    width: 300px;
+    margin: 21px 0 0;
 }
 
 #actions img {
@@ -444,56 +314,64 @@ button:active {
 
 #actions button {
     width: 140px;
-	margin-right: 20px;
     float: left;
 }
 
+#actions button.fork {
+    float: right;
+}
+
 section#projectContent {
-    padding: 10px 0;
     width: 100%;
 }
 
     section#projectContent .contentBlock {
-        margin: 10px;
+        margin: 20px 0;
+        width: 100%;
+        padding-left: 320px;
+    }
+    
+    section#projectContent .contentBlock h3 {
+        margin: 0 10px;
+    }
+    
+    section#projectContent .contentBlock ul {
+        list-style-type: none;
+        color: #706F68;
+        margin: 0 0 14px 0;
+    }
+    
+    section#projectContent .contentBlock ul li {
+        padding: 0 0 7px 20px;
+        background-repeat: no-repeat;
+        background-position: 0 2px;
+    }
+    
+    section#projectContent .contentBlock ul li.lab {
+        background-image: url("../i/lab.png");
+    }
+    
+    section#projectContent .contentBlock ul li.dev {
+        background-image: url("../i/wrench.png");
+    }
+    
+    section#projectContent .contentBlock ul li:last-child {
+        border-bottom: none;
     }
     
     section#projectContent .contentBlock p {
-        color: #918F87;
+        margin: 0 0 14px 0;
+        color: #706F68;
     }
     
-    section#projectContent .contentBlock img {
-        width: 300px;
-        height: 175px;
+    section#projectContent .contentBlock img.titleImg {
         display: block;
         margin: 0 0 10px 0;
     }
     
-ul#teamList li {
-    margin: 5px 10px;
-    width: 
-}
-
-    .team span.avatar {
-        width: 36px;
-        height: 36px;
-        padding: 1px;
-        margin: 0 10px 0 0;
-        float: left;
-        background-color: #fff;
-        display: inline-block;
-        border: 1px solid #D1CDC2;
-    }
-    
-    .team h3 {
-        display: inline-block;
-        float: left;
-        line-height: 36px;
-    }
-    
 /* blog styles */
-    
+
 section.post {
-    padding: 30px 0;
 }
     
     section.post h2 {
@@ -502,8 +380,13 @@ section.post {
         line-height: 24px;
     }
     
+    section.post .via {
+        margin: 5px 0;
+        display: block;
+    }
+    
     section.post time {
-        color: #918F87;
+        color: #706F68;
         font-style: italic;
         display: block;
         margin: 0 0 7px 0;
@@ -519,11 +402,14 @@ section.post {
         margin: 0 0 28px 0;
     }
     
+    section.post h3 {
+        line-height: 28px;
+    }
+    
     section.post .tag {
         font-size: 12px;
         padding: 0 7px;
         display: inline-block;
-        background-color: rgba(0,146,222,1);
         color: #fff;
         font-weight: bold;
         text-shadow: none;
@@ -555,26 +441,95 @@ aside {
     }
     
     aside li {
-        color: #918F87;
+        color: #706F68;
         padding: 5px 0;
         border-bottom: 1px solid #D1CDC2;   
     }
     
 /* people page styles */
-#map {
-    width: 940px;
-    height: 490px;
-    display: block;
-    background-image: url("../i/map.png");
+
+ul#teamList {
+    float: left;
+    width: 100%;
 }
+
+ul#teamList li {
+    margin: 5px 10px;
+}
+
+/*
+ul#teamList.teamPage li {
+    padding: 20px 0 0;
+    border-top: 10px solid rgba(150, 150, 150, 0.8);
+}
+*/
+
+    .team span.avatar {
+        width: 36px;
+        height: 36px;
+        padding: 1px;
+        margin: 0 10px 0 0;
+        float: left;
+        background-color: #fff;
+        display: inline-block;
+        border: 1px solid #D1CDC2;
+    }
     
+    .team h3 {
+        line-height: 36px;
+        display: inline-block;
+        float: left;
+        width: 254px;
+        overflow: hidden;
+    }
+    
+    .team .profile {
+        list-style-type: none;
+        display: block;
+        float: left;
+        margin: 5px 0 20px;
+    }
+    
+    ul#teamList li ul li,
+    ul#teamList.teamPage li ul li {
+        color: #706F68;
+        margin: 0;
+        padding: 5px 0;
+        border-top: none;
+    }
+    
+/* hacks */
+    #hackList .hack {
+        padding: 20px 0;
+    }
+
+    #hackList p {
+        color: #706F68;
+        float: right;
+        display: inline-block;
+        width: 620px;
+    }
+
+    #hackList .hackHeader {
+        width: 300px;
+        float: left;
+        display: inline-block;
+        text-align: right;
+    }
+    
+    #hackList hr {
+        width: 940px;
+        float: left;
+    }
     
 footer {
+    width: 960px;
+    margin: 0 auto;
     display: block;
     padding: 80px 0 20px;
     font-size: 12px;
     line-height: 18px;
-    color: #918F87;
+    color: #706F68;
 }
     
     footer ul {
@@ -644,9 +599,4 @@ html[xmlns] .clearfix {
 .isotope-hidden.isotope-item {
     pointer-events: none;
     z-index: 1;
-}
-
-/* pascal hacking */
-.contentBlock p {
-	padding-bottom: 7px;
 }

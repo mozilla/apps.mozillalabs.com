@@ -16,10 +16,20 @@ body h2 {
 }
 
 body .elevator {
-    font-size: 18px;
-    line-height: 24px;
-    text-indent: -6px;
-    width: 460px;
+    font-size: 14px;
+    line-height: 21px;
+    width: 300px;
+    padding: 0;
+}
+
+body .cssColumn {
+    -webkit-column-count: 1;
+       -moz-column-count: 1;
+            column-count: 1;
+            
+    -webkit-column-gap: 0;
+       -moz-column-gap: 0;
+            column-gap: 0;
 }
 
 /* columns */
@@ -33,7 +43,8 @@ body .tripleColumn {
     width: 620px;
 }
 
-body .tripleColumn img {
+body .tripleColumn img,
+body .tripleColumn video {
     max-width: 620px;
 }
 
@@ -46,44 +57,25 @@ body header nav {
         display: block;
         text-indent: 0;
     }
-
-/* venn diagram */
-
-body section#vennDiagram {
-    height: 280px;
-}
-
-    body .circle {
-        width: 200px;
-        height: 200px;
-        display: block;
-        text-align: center;
-        line-height: 200px;
-        top: 60px;
-    }
-    
-    body .circle.selected {
-        top: 60px;
-    }
-    
-    body .circle.collaboration {
-        left: 0;
-    }
-    
-    body .circle.standards {
-        left: 145px;
-    }
-    
-    body .circle.messaging {
-        right: 145px;
-    }
-    
-    body .circle.media {
-        right: 0;
-    }
     
 body .singleColumn.third {
     display: none;
+}
+
+body #video.visible {
+    height: 369px;
+}
+
+body #hackList p {
+    width: 300px;
+}
+
+body #hackList hr {
+    width: 620px;
+}
+
+body footer {
+    width: 640px;
 }
     
 body footer ul {

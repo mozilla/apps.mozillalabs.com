@@ -10,20 +10,7 @@ body #wrapper {
 
 /* typography */
 
-body h2 {
-    margin: 0 0 7px 0;
-}
 
-body .elevator {
-    font-size: 14px;
-    line-height: 21px;
-    text-indent: -6px;
-    width: 300px;
-}
-
-body .right {
-    text-align: left;
-}
 
 /* columns */
 
@@ -38,7 +25,9 @@ body .doubleColumn {
 }
 
 body .tripleColumn img,
-body .doubleColumn img {
+body .doubleColumn img,
+body .tripleColumn video,
+body .doubleColumn video {
     max-width: 300px;
 }
 
@@ -54,58 +43,24 @@ body header a.home {
     
 body section#about {
     padding: 0 0 20px;
+    background-image: url("../i/header_sml.png");
+    min-height: 0;
 }
 
-/* venn diagram */
-
-body section#vennDiagram {
-    height: auto;
+body .bgImage {
+    background-image: none;
 }
 
-body #circleWrap {
-    margin: 0 8px;
+body section#projectContent .contentBlock {
+    padding: 0;
 }
-
-    body .circle {
-        top: auto;
-        position: relative;
-        display: block;
-        float: left;
-        text-align: left;
-        line-height: 36px;
-        width: 36px;
-        height: 36px;
-        margin: 0 2px;
-        color: transparent;
-        overflow: hidden;
-    }
-    
-    body .circle.selected {
-        width: 180px;
-        text-indent: 0;
-        text-align: center;
-        color: #fff;
-        top: auto;
-    }
-
-    body .circle.collaboration {
-        left: auto;
-    }
-    
-    body .circle.standards {
-        left: auto;
-    }
-    
-    body .circle.messaging{
-        right: auto;
-    }
-    
-    body .circle.media {
-        right: auto;
-    }
     
 body .singleColumn.second {
     display: none;
+}
+    
+body #video.visible {
+    height: 189px;
 }
     
 body section.post p {
@@ -113,14 +68,24 @@ body section.post p {
     line-height: 21px;
     margin: 0 0 21px 0;
 }
+
+body section.post h3 {
+    line-height: 21px;
+}
+
+body #hackList .hackHeader {
+    margin: 0 0 10px 0;
+    text-align: left;
+}
+
+body #hackList hr {
+    width: 300px;
+}
+
+body footer {
+    width: 320px;
+}
     
 body footer p {
     text-align: left;
-}
-    
-    
-    
-    
-    
-    
-    
+}    

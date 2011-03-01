@@ -1,0 +1,169 @@
+/*
+
+INFO:     Colors for various categories.
+
+*/
+
+/* link and header colors */
+
+.home a,
+.home h1, 
+.home h2 {
+    color: #222;
+}
+
+.collaboration a,
+.collaboration h1, 
+.collaboration h2 {
+    color: rgba(255,160,0,1);
+}
+
+.standards a,
+.standards h1, 
+.standards h2 {
+    color: #de0000;
+}
+
+.messaging a,
+.messaging h1, 
+.messaging h2 {
+    color: rgba(0,146,222,1);
+}
+
+.apps a,
+.apps h1, 
+.apps h2 {
+    color: #5B7FA6;
+}
+
+.messaging h3 a,
+.standards h3 a,
+.collaboration h3 a,
+.apps h3 a,
+.home h3 a {
+    color: #222;
+}
+
+/* venn diagram colors */
+
+.circle.collaboration {
+    left: 0px;
+    background-color: rgba(255,160,0,0.8);
+}
+
+.circle.collaboration:hover,
+.circle.collaboration.selected {
+    background-color: rgba(255,160,0,1);
+}
+
+.circle.standards {
+    left: 220px;
+    background-color: rgba(228,63,63,0.8);
+}
+
+.circle.standards:hover,
+.circle.standards.selected {
+    background-color: rgba(228,63,63,1);
+}
+
+.circle.messaging {
+    right: 220px;
+    background-color: rgba(0,146,222,0.8);
+}
+
+.circle.messaging:hover,
+.circle.messaging.selected {
+    background-color: rgba(0,146,222,1);
+}
+
+.circle.apps {
+    background-color: rgba(90,179,90,0.8);
+    right: 0;
+}
+
+.circle.apps:hover,
+.circle.apps.selected {
+    background-color: rgba(90,179,90,1);
+}
+
+
+/* project border colors */
+
+ul#projectList li.collaboration {
+    border-left: 10px solid rgba(255,160,0,0.8);
+}
+
+ul#projectList li.standards {
+    border-left: 10px solid rgba(228,63,63,0.8);
+}
+
+ul#projectList li.messaging {
+    border-left: 10px solid rgba(0,146,222,0.8);
+}
+
+ul#projectList li.apps {
+    border-left: 10px solid rgba(90,179,90,0.8);
+}
+
+ul#projectList li.graduate {
+    border-left: 10px solid rgba(150,150,150,0.8);
+}
+
+ul#projectList li.retired {
+    border-left: 10px solid rgba(220,220,220,0.8);    
+}
+
+/* tag colors */
+
+.home .tag {
+    background-color: rgba(150, 150, 150, 1);
+}
+
+.messaging .tag {
+    background-color: rgba(0,146,222,1);
+}
+
+.standards .tag {
+    background-color: rgba(228,63,63,1);
+}
+
+.apps .tag {
+    background-color: rgba(90,179,90,1);
+}
+
+.collaboration .tag {
+    background-color: rgba(255,160,0,1);
+}
+
+/* rss colors */
+
+/*
+.collaboration .rss {
+    background-position: 0 -32px;
+}
+
+.standards .rss {
+    background-position: 0 -66px;
+}
+
+.messaging .rss {
+    background-position: 0 -100px;
+}
+
+.apps .rss {
+    background-position: 0 -134px;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
