@@ -5,7 +5,7 @@ import urllib2
 import urlparse
 import json
 
-db = { }
+db = [ ]
 
 line = sys.stdin.readline()
 while line:
@@ -17,10 +17,16 @@ while line:
         origin = o.scheme + "://" + o.netloc;
         if manifest.startswith("\xef\xbb\xbf"):
             manifest = manifest[3:]
-        db[origin] = json.loads(manifest)
-        db[origin]["src_url"] = url
+        item = { }
+        item["src_url"] = url
+        item["origin"] = origin
+        item["manifest"] = json.loads(manifest)
+        db.append(item)
     except (ValueError, RuntimeError) as e:
         print >> sys.stderr, "WARNING: Can't read manifest, skipping '%s'" % url
     line = sys.stdin.readline()
+
+# re-sort by name
+db.sort(key=lambda x: x["manifest"]["name"])
 
 print json.dumps(db)

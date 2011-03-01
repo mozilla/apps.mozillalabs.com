@@ -14,34 +14,34 @@ $(document).ready(function() {
     var installed = null;
 
     $.getJSON( "db/apps.json", function(contents) {
-        console.log("whee");
         // whee!  we got our app database.  let's rip through and add all them apps to the
         // directory
         var d = $("#contentWrap");
         d.empty();
-        for (var k in contents) {
-            var manifest = contents[k];
+
+        for (var i = 0; i < contents.length; i++) {
+            var app = contents[i];
             var e = $("<div />");
             var button = $("<div />").addClass("button").text("Loading...");
             button.appendTo(e);
             var icon = $('<img />');
-            icon.attr('src', extractIcon(manifest, k));
+            icon.attr('src', extractIcon(app.manifest, app.origin));
             icon.appendTo(e);
 
             // on load error, reset to default icon.
             icon.error(function() {
                 $(this).unbind("error").attr("src", extractIcon());
             });
-            var name = $("<div />").addClass("name").text(manifest.name);
+            var name = $("<div />").addClass("name").text(app.manifest.name);
             name.appendTo(e);
-            if (manifest.developer && manifest.developer.name) {
+            if (app.manifest.developer && app.manifest.developer.name) {
                 var attribution = $("<div />").addClass("attribution");
                 attribution.append("<span/>").text("by ");
-                if (manifest.developer.url) {
-                    $("<a/>").attr("href", manifest.developer.url)
-                        .text(manifest.developer.name).appendTo(attribution);
+                if (app.manifest.developer.url) {
+                    $("<a/>").attr("href", app.manifest.developer.url)
+                        .text(app.manifest.developer.name).appendTo(attribution);
                 } else {
-                    $("<span/>").text(manifest.developer.name).appendTo(attribution);
+                    $("<span/>").text(app.manifest.developer.name).appendTo(attribution);
                 }
                 attribution.appendTo(e);
 
@@ -61,13 +61,11 @@ $(document).ready(function() {
                                     {
                                         url: $(elem).attr("appManifestURL"),
                                         onsuccess: function() {
-                                            console.log("install clicked!");
                                             installed = null;
                                             updateStatus(elem);
                                         },
                                         onerror: function(errObj) {
                                             alert("oh no baby, business hours are over: " + errObj.code + " - " + errObj.message);
-                                            console.log(errObj);
                                             updateStatus(elem);
                                         }
                                     }
@@ -81,7 +79,6 @@ $(document).ready(function() {
                 if (installed === null) {
                     navigator.apps.getInstalledBy(function(i) {
                         installed = i;
-                        console.log(installed);
                         checkMe(elem);
                     });
                 } else {
@@ -94,9 +91,8 @@ $(document).ready(function() {
                 $(this).unbind('mouseenter mouseleave');
                 updateStatus(self);
            });
-            console.log(manifest.src_url);
-            e.attr("appManifestURL", manifest.src_url);
-            e.attr("origin", k);
+            e.attr("appManifestURL", app.src_url);
+            e.attr("origin", app.origin);
             e.addClass("singleColumn").appendTo(d);
         }
     });
