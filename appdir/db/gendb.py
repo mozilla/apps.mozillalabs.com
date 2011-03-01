@@ -16,6 +16,7 @@ while line:
         o = urlparse.urlparse(url)
         origin = o.scheme + "://" + o.netloc;
         db[origin] = json.loads(manifest)
+        db[origin]["src_url"] = url
     except (ValueError, RuntimeError) as e:
         print >> sys.stderr, "WARNING: Can't read manifest, skipping '%s'" % url
     line = sys.stdin.readline()

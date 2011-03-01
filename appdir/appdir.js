@@ -46,29 +46,58 @@ $(document).ready(function() {
                 attribution.appendTo(e);
 
             }
-            e.hover(function() {
-                var self = this;
+
+            function updateStatus(elem) { 
                 function checkMe(elem) {
-                    $(elem).find(".button").addClass("installable").text("Install")
-                        .click(function() {
-                            
-                        });
-                    
+                    var origin = $(elem).attr("origin");
+                    for (var i = 0; i < installed.length; i++) {
+                        if (origin === installed[i].origin) break;
+                    }
+                    if (i === installed.length) {
+                        $(elem).find(".button").addClass("installable").text("Install")
+                            .click(function() {
+                                $(elem).find(".button").unbind('click').removeClass("installable").text("Loading...");
+                                navigator.apps.install(
+                                    {
+                                        url: $(elem).attr("appManifestURL"),
+                                        onsuccess: function() {
+                                            console.log("install clicked!");
+                                            installed = null;
+                                            updateStatus(elem);
+                                        },
+                                        onerror: function(errObj) {
+                                            alert("oh no baby, business hours are over: " + errObj.code + " - " + errObj.message);
+                                            console.log(errObj);
+                                            updateStatus(elem);
+                                        }
+                                    }
+                                );
+                            });
+                    } else {
+                        $(elem).find(".button").addClass("installed").text("Installed!")
+                    }
                 }
 
-                $(this).unbind('mouseenter mouseleave');
                 if (installed === null) {
                     navigator.apps.getInstalledBy(function(i) {
                         installed = i;
-                        checkMe(self);
+                        console.log(installed);
+                        checkMe(elem);
                     });
                 } else {
-                    checkMe(self);
+                    checkMe(elem);
                 }
-            });
+            }
 
+            e.hover(function() {
+                var self = this;
+                $(this).unbind('mouseenter mouseleave');
+                updateStatus(self);
+           });
+            console.log(manifest.src_url);
+            e.attr("appManifestURL", manifest.src_url);
+            e.attr("origin", k);
             e.addClass("singleColumn").appendTo(d);
-
         }
     });
 });
