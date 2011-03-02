@@ -6,14 +6,21 @@
     <link rel="stylesheet" href="css/960.css" type="text/css" media="screen">
     <link rel="shortcut icon" type="image/ico" href="i/favicon.ico">
     
+    <script type="text/javascript">
+        document.createElement("section");
+        document.createElement("article");  
+        document.createElement("footer");  
+        document.createElement("header");  
+        document.createElement("hgroup");  
+        document.createElement("nav");  
+    </script>
+    
     <script src="js/jquery.1.5.min.js" type="text/javascript" charset="utf-8"></script>
-    <!-- <script src="js/jquery.isotope.min.js" type="text/javascript" charset="utf-8"></script> -->
     <script src="js/labs.js" type="text/javascript" charset="utf-8"></script>
     
 </head>
 
 <body class="apps">
-    <div id="grid"></div>
     <div id="wrapper">
     
         <header class="clearfix ">
@@ -24,7 +31,7 @@
             <div class="doubleColumn">
                 <h1>Mozilla : Web Applications</h1>
                 <article class="elevator">
-                    <p>Web Applications are applications that run on <u style="color:#CF32A5">any device</u>, and can be distributed through <u style="color:#9A32CF">any store</u> or <u style="color:#4732CF">directly</u> by the developer.</p>
+                    <p>Web Apps are applications that run on <u style="color:#CF32A5">any device</u>, and can be distributed through <u style="color:#9A32CF">any store</u> or <u style="color:#4732CF">directly</u> by the developer.</p>
                 </article>
                 <div class="videoToggle">
                     <button class="play sans"><img src="i/video.png"> Watch the video</button>
@@ -46,47 +53,55 @@
         <section id="projectContent">
             <div id="contentWrap" class="clearfix">
             
-                <div class="contentBlock clearfix">
-                    <h3 class="sans">For Users</h3>
-                    <div class="singleColumn">
-                        <p>Web browsers are adding capabilities that allow web applications to create richer, more integrated experiences.</p>
-                    </div>
-                    <div class="singleColumn">
-                        <p>Mozilla has created a <a href="#">gallery of user interface concepts</a> to show how applications can enhance your web environment.</p>
+                <div class="contentBlock user clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">For Users</h3>
+                        <div class="singleColumn">
+                            <p>Web browsers are adding capabilities that allow web applications to create richer, more integrated experiences.</p>
+                        </div>
+                        <div class="singleColumn">
+                            <p>Mozilla has created a <a href="gallery/">gallery of user interface concepts</a> to show how applications can enhance your web environment.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="contentBlock clearfix">
-                    <h3 class="sans">For the Adventurous</h3>
-                    <div class="singleColumn">
-                        <p>For users who don't mind running beta-quality code, we have a number of prototypes that you can try out:</p>
+                <div class="contentBlock dev clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">For Developers</h3>
+                        <div class="singleColumn">
+                            <p>Web Applications are built using HTML5, and can run in any modern browser or mobile OS. Read on to learn how to build them:</p>
+                        </div>
+                        <div class="singleColumn">
+                            <ul>
+        					   <li class="dev">How to <a href="https://developer.mozilla.org/en/OpenWebApps">create a web application</a>
+        					   <li class="dev">How to <a href="https://developer.mozilla.org/en/OpenWebApps/Creating_a_store">create a web application directory or&nbsp;store</a>
+        				    </ul>
+        				</div>
                     </div>
-                    <div class="singleColumn">
-                        <ul>
-        					<li class="lab"><a href="#">Firefox extension</a>: Adds application management and launch features to Firefox
-        					<li class="lab"><a href="#">Chrome extension:</a> Adds application management and launch features to Chrome
-        					<li class="lab"><a href="#">Android Sync app:</a> Synchronizes your applications to any Android mobile
-    					</ul>
-    				</div>
                 </div>
                 
-                <div class="contentBlock clearfix">
-                    <h3 class="sans">For Developers</h3>
-                    <div class="singleColumn">
-                        <p>Web Applications are built using HTML5, and can run in any modern browser or mobile OS. Read on to learn how to build them:</p>
+                <div class="contentBlock adventure clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">For the Adventurous</h3>
+                        <div class="singleColumn">
+                            <p>For users who don't mind running beta-quality code, we have a number of prototypes that you can try out:</p>
+                        </div>
+                        <div class="singleColumn">
+                            <ul>
+            					<li class="lab"><a href="addons/firefox.html">Firefox extension</a>: Adds application management and launch features to Firefox
+            					<li class="lab"><a href="#">Chrome extension:</a> Adds application management and launch features to Chrome
+            					<li class="lab"><a href="appdir/">Demo Applications:</a> A collection of awesome Web Apps written by our friends
+        					</ul>
+        				</div>
                     </div>
-                    <div class="singleColumn">
-                        <ul>
-    					   <li class="dev">How to <a href="#">create a web application</a>
-    					   <li class="dev">How to <a href="#">create a web application directory or&nbsp;store</a>
-    				    </ul>
-    				</div>
                 </div>
+                
             </div>
         </section>
         
         <hr>
         
+<!--
         <section id="blog" class=" clearfix">
             <div class="tripleColumn">
                 <h2>&mdash;Latest News <span class="caption"><a href="#">visit the blog</a></span></h2>
@@ -111,10 +126,11 @@
         </section>
         
         <hr>
+-->
         
         <section id="people" class=" clearfix">
             <div class="tripleColumn">
-                <h2>&mdash;the Web App Team</h2>
+                <h2>the Web App Team</h2>
             </div>
             <ul id="teamList" class="clearfix">
                 <li class="team clearfix singleColumn">
@@ -157,7 +173,6 @@
     <footer class="clearfix sans">
         <ul>
             <li><a href="http://groups.google.com/group/mozilla-labs">Forum</a></li>
-            <li><a href="#">Contact Us</a></li>
             <li><a href="http://www.mozilla.com/en-US/privacy-policy.html">Privacy Policy</a></li>
             <li><a href="http://www.mozilla.com/en-US/about/legal.html">Legal Notices</a></li>
         </ul>

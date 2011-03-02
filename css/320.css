@@ -51,8 +51,13 @@ body .bgImage {
     background-image: none;
 }
 
-body section#projectContent .contentBlock {
-    padding: 0;
+body section#projectContent .contentBlock,
+body section#projectContent .contentBlock.alignLeft,
+body section#projectContent .contentBlock.dev,
+body section#projectContent .contentBlock.adventure,
+body section#projectContent .contentBlock.user {
+    padding: 200px 0 0 0;
+    background-position: center top;
 }
     
 body .singleColumn.second {
@@ -71,15 +76,6 @@ body section.post p {
 
 body section.post h3 {
     line-height: 21px;
-}
-
-body #hackList .hackHeader {
-    margin: 0 0 10px 0;
-    text-align: left;
-}
-
-body #hackList hr {
-    width: 300px;
 }
 
 body footer {

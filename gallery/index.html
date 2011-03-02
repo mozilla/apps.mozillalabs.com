@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mozilla : Web Applications : User Interface Concept Gallery</title>
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+    <link rel="stylesheet" href="../css/960.css" type="text/css" media="screen">
+    <link rel="shortcut icon" type="image/ico" href="../i/favicon.ico">
+    
+    <script type="text/javascript">
+        document.createElement("section");
+        document.createElement("article");  
+        document.createElement("footer");  
+        document.createElement("header");  
+        document.createElement("hgroup");  
+        document.createElement("nav");  
+    </script>
+    
+    <script src="../js/jquery.1.5.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/labs.js" type="text/javascript" charset="utf-8"></script>
+    
+</head>
+
+<body class="apps">
+    <div id="grid"></div>
+    <div id="wrapper">
+    
+        <header class="clearfix ">
+            <a class="home" href="../index.html"><img src="../i/mozillaLogo.png" alt="Mozilla"></a>
+        </header>
+        
+        <section id="about" class="clearfix ">
+            <div class="doubleColumn">
+                <h1>Mozilla : Web Applications</h1>
+                <article class="elevator">
+                    <p>TBD!!! Web Apps are applications that run on <u style="color:#CF32A5">any device</u>, and can be distributed through <u style="color:#9A32CF">any store</u> or <u style="color:#4732CF">directly</u> by the developer.</p>
+                </article>
+            </div>
+        </section>
+
+        <hr class="shadow">
+        
+        <section id="projectContent">
+            <div id="contentWrap" class="clearfix">
+            
+                <div class="contentBlock clearfix">
+					<p>The notion of installing web applications brings with it the possibility of a raft of new capabilities that extend the utility of web applications beyond the application itself, letting the user benefit from the application in a much broader context.</p>
+
+					<h1 class="sans">Services</h1>
+					<p>The ability for an application to register itself as offering a service would let users take advantage of that capability from within other web sites or applications.</p>
+					<p>Here are a few examples of how web sites could take advantage of services provided by applications the user has installed:</p>
+					<ul>
+						<li><a href="#payment">Payment services</a> for easier checkout or donations</li>
+					    <li><a href="#contact">Contact management services</a> for greater control over what you share with sites</li>
+					    <li><a href="#calendar">Calendar services</a> for making, viewing, and modifying calendars from anywhere</li>
+						<li><a href="#global">Global services</a> let the user take advantage of a service even if the page or app they're on don't specifically support them</li>
+					</ul>
+					<p>These are just a few examples of the kinds of services apps could provide to users and other apps. Other services that next-generation apps implement could include file management, printing, sharing, travel itinerary management, smart messaging, and audio/video services.</p>
+
+					<h1 class="sans">Widgets</h1>
+					<p>Along with services, widgets will give users lightweight ways to interact with their data and their applications without having to open the full application experience. While the concept of a widget is nothing new, the web and native platforms are at a point now where widgets can live beyond dashboards, reaching in to our phones and desktops in a simple, consistent way.</p>
+					<p>We've out together a few concepts of how widget experiences can arise out of everyday web interactions:</p>
+					<ul>
+						<li><a href="#widget-discovery">Widget discovery</a> advancements can make widgets instantly useful, while letting users keep the ones that help them the most</li>
+						<li><a href="#widget-multiplatform">Multi-platform widgets</a> can give a continuity of experience across devices as you move from your home computer to mobile to work</li>
+					</ul>
+                </div>
+
+                <div class="contentBlock clearfix">
+					<a name="payment"></a><h1 class="sans">Payment Services</h1>
+
+					<h3 class="sans">Shopping Cart Scenario</h3>
+					<p>The user has previously installed a financial management web app, 'MyFinanceCo'. In addition to consolidating transactions and tracking finances, MyFinanceCo also provides a payment service to the browser.</p>
+					<p>The user is a first-time shopper at Bay Bookstore and, when she comes to the shopping cart, Bay Bookstore's site checks and sees that she has a payment service set up. When she clicks on 'Checkout' the user is presented with the accounts she uses in MyFinanceCo, along with available balances for each:</p>
+					<img src="i/shopping_cart_scenario.png" alt="Illustration - Shopping Cart Scenario">
+					<p>The user can make an informed choice of payment method and, when she selects ‘First National Visa’ and clicks ‘Pay $45.91’, MyFinanceCo securely transmits that card’s financial information and billing address to Bay Bookstore, completing the payment portion of the transaction with three clicks.</p>
+					<p>Even in this basic case there are a few important things to point out:</p>
+					<ul>
+					    <li>At no point in the process does the Bay Bookstore site get to see what financial accounts the user has, or even what financial service (in this case, MyFinanceCo) is being used to aid the transaction. Bay Bookstore is only checking if a payment service exists and, if it does, the Bay Bookstore waits for the card information to be sent from the user’s browser after they’ve selected the card they want to use and click ‘Pay’.</li>
+					    <li>This service could also be implemented directly by a bank, which could allow for more robust features such as single-use credit card numbers, pre-authroized by the bank for the specific transaction amount and no more.</li>
+					</ul>
+					
+					<h3 class="sans">Donation Scenario</h3>
+					<p>Metro City Pet Shelter is a non-profit organization that relies on community donations for its ongoing operations. For most small non-profits, setting up and maintaining a mechanism to handle online donations is either cumbersome or relies on sending the user to a third-party payment site. Donations fall off quickly as the transaction becomes more complex or cumbersome, so having an easy way for the shelter to accept payments is often vital for an organization’s survival.</p>
+					<img src="i/donation_scenario.png" alt="Illustration - Donation Scenario">
+					<p>Rather than send potential donors off-site or requiring them to use a specific payment service, the non-profit can call on the payment service to let the visitor make a donation of the amount they choose, from the account they choose, in a matter of seconds, without having to register or sign in to a third-party service, or fill out a complex web form.</p>
+					<p>A receipt for the transaction can also be routed back through to the payment service to MyFinanceCo for easier record-keeping.</p>
+				</div>
+				
+                <div class="contentBlock clearfix">
+					<a name="contact"></a><h1 class="sans">Contact Management Service</h1>
+					
+					<h3 class="sans">Invitation Scenario</h3>
+					<p>Creating an invitation for a birthday party, the user needs to invite several of their friends but is leery of connecting the site to their full social network. A trusted contact management app (‘MyContactsApp’) with connections to all your social networks provides a service that other apps can invoke to allow the user to choose exactly who they would like to invite from all of their social networks.</p>
+					<img src="i/invitation_scenario.png" alt="Illustration - Invitation Scenario">
+				</div>
+
+                <div class="contentBlock clearfix">
+					<a name="calendar"></a><h1 class="sans">Calendar Service</h1>
+					
+					<h3 class="sans">Add to Calendar Scenario</h3>
+					<p>The user is invited to a party via an invitation site and wants to add the event to their calendar. Currently sites that support this do so either by offering an .ics file for download and importing or via one-off buttons for importing into a specific calendaring app (e.g. Outlook, Facebook, Google Calendar, Yahoo! Calendar).</p>
+					<p>By calling on a Calendar service that the user has installed with their calendaring app, the invitation site can give the user a quick and easy way to add the event to their calendar, no matter which calendar they use.</p>
+					<img src="i/add_to_calendar_scenario.png" alt="Illustration - Add to Calendar Scenario">
+					<p>Even if the user hasn’t installed an app that provides a calendaring service, the service manager could default to a baseline set of generic options (the aforementioned .ics file, links to Outlook, Facebook, Google Calendar and Yahoo! Calendar) that would still provide value to the user at or beyond those usually offered by invitation and event sites.</p>
+				</div>
+
+                <div class="contentBlock clearfix">
+					<a name="global"></a><h1 class="sans">Global Services</h1>
+
+					<p>The preceding examples demonstrate the power and flexibility that can arise when the user has installed an app that adds a service, and they use a site that checks for that service. The reality is that adoption takes time, and that in the early stages most sites won’t be checking for installed payment, contact, or calendar services.</p>
+					<p>Thankfully, many of these services can still be highly useful to sites that don’t explicitly try to take advantage of them. For example, all the concepts presented here could apply just as well to present-day sites. The payment service could auto-fill credit card and billing information into the web form of a present-day checkout page. The contact service could still let you compile a list of names and email addresses selected from across all your networks, suitable for pasting into a guest list or the ‘To:’ field of an email composition.</p>
+					<img src="i/global_services.png" alt="Illustration - Global Services">
+					<p>Above is an example of a ‘Services’ menu in the browser chrome that would provide access to applicable services from any location. In this example the user is using the Calendar service to locate any event data in the page and give them the ability to add it to their calendar.</p>
+				</div>
+
+                <div class="contentBlock clearfix">
+					<a name="widget-discovery"></a><h1 class="sans">Widget discovery</h1>
+					
+					<p>You can have 300,000 widgets on the web, but most users won’t take the time to find those widgets that best suit their needs. A successful widget ecosystem depends on users discovering relevant tools easily.</p>
+					<p>One way to drastically increase widget visibility and utility is to make widgets a useful part of the everyday browsing experience. In this concept we’ve moved the browser tabs to the left side, sacrificing horizontal width for vertical space. Now each tab can contain a widget whose contents are specified by the tab’s page. This gives the user access to the most important content or controls on the page while they browse other tabs:</p>
+					<img src="widget_discovery.png" alt="Illustration - Widget Discovery">
+					<p>With the widgets of currently open tabs always visible, the user can keep tabs on their Facebook notifications, reference the dates and airfares available for the trip they’re planning, keep an eye on the forecast and control their music all without having to flip back and forth between tabs.</p>
+					<p>In the above example the user still has to be ‘on’ the site in order to get the widget. The next step is to use the widget tab bar as a discovery mechanism for grabbing and keeping widgets.</p>
+
+					<h3 class="sans">Grab a widget</h3>
+					<img src="i/grab_a_widget.png" alt="Illustration - Grab a Widget">
+					<p>In this concept, widgets are objects the user can manipulate in natural ways. Drag-and-drop reordering of widgets would work just as it does with tabs today, with the essential difference that if you want to ‘keep’ a widget for use after you leave the site, you can drag it to your desktop. The browser recognizes this action and creates a wrapper application, a ‘micro-browser’ that simply runs the widget as its own item on the desktop.</p>
+
+					<h3 class="small">Keep a widget</h3>
+					<img src="keep_a_widget.png" alt="Illustration - Keep a Widget">
+				</div>
+				
+                <div class="contentBlock clearfix">
+					<a name="widget-multiplatform"></a><h1 class="sans">Multi-platform widgets</h1>
+										
+					<p>Reusability and compatability across different platforms is one of HTML’s greatest strengths. A standardized widget format has the benefit of being applied to any number of platforms. A streaming music site might have a simple desktop widget:</p>
+					<img src="i/multi-platform_widgets-1.png" alt="Illustration - Multi-platform Widgets">
+					<p>And the user could add the same widget to their Android home screen:</p>
+					<img src="i/multi-platform_widgets-2.png" alt="Illustration - Multi-platform Widgets">
+					<p>The idea of a single object or session with multiple views in to it is quickly becoming a hallmark of online apps. Being able to pause music on your computer and pick up right where you left off when you start streaming to your phone is a powerful example of the shift from local data into the cloud. All these widgets are merely doorways into information tools that exist online, and reach into every connected device we use.</p>
+				</div> 
+				
+            </div>
+        </section>
+        
+        <hr>
+            
+    </div> <!-- wrapper -->
+    
+    <footer class="clearfix sans">
+        <ul>
+            <li><a href="http://groups.google.com/group/mozilla-labs">Forum</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="http://www.mozilla.com/en-US/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="http://www.mozilla.com/en-US/about/legal.html">Legal Notices</a></li>
+        </ul>
+        <div class="singleColumn">
+            <p>Copyright &copy; 2011 Mozilla. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

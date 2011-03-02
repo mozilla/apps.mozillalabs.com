@@ -1,9 +1,6 @@
 /*
 
-INFO:     Mozilla Labs 2011 mockup to be
-          built on Expression Engine. This
-          file is for demo purposes only
-          and is not to be considered final.
+INFO:     Mozilla Labs WebApps Page
 
 */
 
@@ -110,7 +107,7 @@ hr.shadow {
     padding: 0 0 0 20px;
 }
 
-/* links */
+/* links & buttons */
 
 a {
     text-decoration: none;
@@ -123,6 +120,33 @@ a:hover {
 
 a img {
     border: none;
+}
+
+button {
+    background-color: #fff;
+    border: 1px solid #D1CDC2;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    
+    background-image: -moz-linear-gradient(top, #fff 0%, #f2f2f2 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #f2f2f2));
+    
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
+button:active {
+    border: 1px solid #666;
+    
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
+       -moz-box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
+            box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
+}
+
+button img {
+    vertical-align: bottom;
 }
 
 /* columns */
@@ -185,7 +209,7 @@ a img {
 
 header {
     display: block;
-    padding: 20px 0 0;
+    padding: 20px 0;
     text-align: right;
 }
 
@@ -228,11 +252,11 @@ section {
 
 section#about {
     padding: 10px 0 30px;
-    background-color: #fff;
     min-height: 200px;
     background-image: url("../i/header.png");
     background-position: right bottom;
     background-repeat: no-repeat;
+    background-color: #fff;
 }
     
     .videoToggle {
@@ -276,50 +300,7 @@ section#about {
     display: block;
 }
 
-button {
-    background-color: #fff;
-    border: 1px solid #D1CDC2;
-    padding: 10px 20px;
-    font-size: 12px;
-    cursor: pointer;
-    
-    background-image: -moz-linear-gradient(top, #fff 0%, #f2f2f2 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #f2f2f2));
-    
-    -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
-            border-radius: 5px;
-}
-
-button:active {
-    border: 1px solid #666;
-    
-    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
-       -moz-box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
-            box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
-}
-
-button img {
-    vertical-align: bottom;
-}
-
-#actions {
-    width: 300px;
-    margin: 21px 0 0;
-}
-
-#actions img {
-    vertical-align: bottom;
-}
-
-#actions button {
-    width: 140px;
-    float: left;
-}
-
-#actions button.fork {
-    float: right;
-}
+/* content */
 
 section#projectContent {
     width: 100%;
@@ -328,7 +309,23 @@ section#projectContent {
     section#projectContent .contentBlock {
         margin: 20px 0;
         width: 100%;
-        padding-left: 320px;
+        min-height: 200px;
+        padding: 0 0 0 320px;
+        background-position: top left;
+        background-repeat: no-repeat;
+        float: left;
+    }
+    
+    .dev {
+        background-image: url("../i/dev.png");
+    }
+    
+    .user {
+        background-image: url("../i/user.png");
+    }
+    
+    .adventure {
+        background-image: url("../i/adventure.png");
     }
     
     section#projectContent .contentBlock h3 {
@@ -357,6 +354,12 @@ section#projectContent {
     
     section#projectContent .contentBlock ul li:last-child {
         border-bottom: none;
+    }
+    
+    section#projectContent .contentBlock .contentBlockWrap {
+        display: table-cell;
+        vertical-align: middle;
+        height: 200px;
     }
     
     section#projectContent .contentBlock p {
@@ -457,13 +460,6 @@ ul#teamList li {
     margin: 5px 10px;
 }
 
-/*
-ul#teamList.teamPage li {
-    padding: 20px 0 0;
-    border-top: 10px solid rgba(150, 150, 150, 0.8);
-}
-*/
-
     .team span.avatar {
         width: 36px;
         height: 36px;
@@ -496,30 +492,6 @@ ul#teamList.teamPage li {
         margin: 0;
         padding: 5px 0;
         border-top: none;
-    }
-    
-/* hacks */
-    #hackList .hack {
-        padding: 20px 0;
-    }
-
-    #hackList p {
-        color: #706F68;
-        float: right;
-        display: inline-block;
-        width: 620px;
-    }
-
-    #hackList .hackHeader {
-        width: 300px;
-        float: left;
-        display: inline-block;
-        text-align: right;
-    }
-    
-    #hackList hr {
-        width: 940px;
-        float: left;
     }
     
 footer {
@@ -567,36 +539,4 @@ html[xmlns] .clearfix {
 
 * html .clearfix {
 	height: 1%;
-}
-
-/* isotope animation */
-
-.isotope,
-.isotope .isotope-item {
-    -webkit-transition-duration: 0.2s;
-       -moz-transition-duration: 0.2s;
-            transition-duration: 0.2s;
-}
-
-.isotope {
-    -webkit-transition-property: height, width;
-       -moz-transition-property: height, width;
-            transition-property: height, width;
-}
-
-.isotope .isotope-item {
-    -webkit-transition-property: -webkit-transform, opacity;
-       -moz-transition-property:    -moz-transform, opacity;
-            transition-property:         transform, opacity;
-}
-
-/* isotope filtering */
-
-.isotope-item {
-    z-index: 2;
-}
-
-.isotope-hidden.isotope-item {
-    pointer-events: none;
-    z-index: 1;
 }

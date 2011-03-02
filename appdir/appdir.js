@@ -65,8 +65,12 @@ $(document).ready(function() {
                                             updateStatus(elem);
                                         },
                                         onerror: function(errObj) {
-                                            alert("oh no baby, business hours are over: " + errObj.code + " - " + errObj.message);
-                                            updateStatus(elem);
+                                          if (errObj.code == "denied") {
+                                            // denied doesn't require additional messaging
+                                          } else {
+                                            alert("Installation did not complete: " + errObj.message);
+                                          }
+                                          updateStatus(elem);
                                         }
                                     }
                                 );

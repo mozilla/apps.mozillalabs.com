@@ -58,6 +58,12 @@ body header nav {
         text-indent: 0;
     }
     
+body section#projectContent .contentBlock .contentBlockWrap {
+    display: block;
+    vertical-align: inherit;
+    height: auto;
+}
+    
 body .singleColumn.third {
     display: none;
 }
