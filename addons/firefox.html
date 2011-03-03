@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mozilla : Web Applications</title>
+    <title>Mozilla : Web Applications for Firefox</title>
     <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-    <link rel="stylesheet" href="../css/960.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="../css/960-ff.css" type="text/css" media="screen">
     <link rel="shortcut icon" type="image/ico" href="../i/favicon.ico">
     
     <script src="../js/jquery.1.5.min.js" type="text/javascript" charset="utf-8"></script>
@@ -15,73 +15,127 @@
     <div id="wrapper">
     
         <header class="clearfix ">
-            <a class="home" href="#"><img src="i/mozillaLogo.png" alt="Mozilla"></a>
+            <a class="home" href="#"><img src="../i/mozillaLogo.png" alt="Mozilla"></a>
         </header>
         
         <section id="about" class="clearfix ">
             <div class="doubleColumn">
-                <h1>Mozilla : Firefox Web Application Extension</h1>
+                <h1>Open Web Apps for Firefox</h1>
                 <article class="elevator">
                     <p>Web Applications are applications that run on <u style="color:#CF32A5">any device</u>, and can be distributed through <u style="color:#9A32CF">any store</u> or <u style="color:#4732CF">directly</u> by the developer.</p>
                 </article>
             </div>
         </section>
-
+        
         <hr class="shadow">
         
-        <section id="projectContent">
-            <div id="contentWrap" class="clearfix">
-            
-                <div class="contentBlock clearfix">
-                    <h3 class="sans">Firefox Web Application Extension</h3>
-                    <div class="singleColumn">
-                        <p>
-                        This experimental extension adds an "installed applications" toolbar button to Firefox.
-                        </p>
-                        
-                        <p>
+        <section class="clearfix post">
+            <div class="singleColumn">
+               <h2><img src="firefox_logo.png"></h2>
+            </div>
+            <div class="doubleColumn">
+                <article class="content">
+                    <p><em>The experimental Open Web Apps extension allows you to easily install and manage
+                    web applications in Firefox and aims to provide a tightly integrated app experience.
+                    <img src="../i/lab.png"/><a href="http://addons.mozilla.org/">Install it now!</a></em></p>
+                </article>
+            </div>
+        </section>
+        
+        <section class="clearfix post">
+            <div class="singleColumn">
+                <h2>Launch</h2>
+            </div>
+            <div class="doubleColumn">
+                <article class="content">
+                    <div>
+                      <img src="firefox_ext.png">
+                    </div>
+                    <p>
+                        This adds an "installed applications" toolbar button to Firefox.
                         You can launch applications directly from the toolbar by clicking the button
                         and clicking the application in the popup.
-                        </p>
-                        
-                        <p>
-                        Applications will automatically be started in an <a href="https://www.mozilla.com/en-US/firefox/beta/features/#feature-apps-tab">App Tab</a>.
-                        </p>
-                        
-                    </div>
-                    <div class="singleColumn">
-                        <p>
-                        <ul>
-                        <li class="lab">
-                          <a href="openwebapps-0.1-dev.xpi">Install the experimental Web Apps extension</a>.  (You will
-                          need to confirm the installation)
-                        </li>
-                        </ul>
-                        </p>
-
-                        <p><small>
-                        <i>Note:</i> In this version, the list of installed applications used by
+                    </p>
+                    <p>
+                        Applications will automatically be started in an <a href="https://www.mozilla.com/en-US/firefox/beta/features/#feature-apps-tab">App Tab</a>,
+                        and are recognized as 'web applications' across sessions.
+                    </p>
+                    <p>
+                        <small><i>Note:</i> In this version, the list of installed applications used by
                         the extension is not synchronized with the default (non-extension-based) list.
                         After installing the extension, you will need to re-install any applications
                         you already have.</small>
-                        </p>
-                        
-                    </div>
-                </div>
-                
-                <div class="contentBlock clearfix">
-                  <h3 class="sans">Screenshot</h3>
-                  <div>
-                      <img src="firefox_ext.png">
-                  </div>
-
-                  <div>
-                      <a href="../index.html">Back to the Open Web Apps page</a>
-                  </div>
-
-                </div>  
-    				</div>
+                    </p>                     
+                </article>
+            </div>
         </section>
+        
+        <section class="clearfix post">
+            <div class="singleColumn">
+                <h2>Discover</h2>
+            </div>
+            <div class="doubleColumn">
+                <article class="content">
+                    <div>
+                      <img src="discover.png">
+                    </div>
+                    <p>
+                        We've also added experimental support for discovering which web sites
+                        provide an installable web app. The toolbar icon will glow and provide
+                        you with a prompt if the extension detects the presence of an installable
+                        application.
+                    </p>
+                    <p>
+                        <small><i>Note:</i> Not all web applications support discovery,
+                        as we have not yet standardized on the mechanism.</small>
+                    </p>
+                </article>
+            </div>
+        </section>
+        
+        <section class="clearfix post">
+            <div class="singleColumn">
+                <h2>Manage</h2>
+            </div>
+            <div class="doubleColumn">
+                <article class="content">
+                    <div>
+                      <img src="about_apps.png">
+                    </div>
+                    <p>
+                        In addition to being able to manage your applications from a dashboard of
+                        your choice, you can also manage them via 'about:apps'. Application
+                        manifests are also made available for inspection.
+                    </p>
+                </article>
+            </div>
+        </section>
+        
+        <section class="clearfix post">
+            <div class="singleColumn">
+                <h2>Extend</h2>
+            </div>
+            <div class="doubleColumn">
+                <article class="content">
+                    <p>
+                        The Open Web Apps extension for Firefox is the ideal vehicle to
+                        test deeper desktop integration for web apps. To this end, we have
+                        added experimental support for propagating media key events (on Windows)
+                        to installed applications. With a simple one-line JS script, you can
+                        now control your favorite web-based music player via keyboard
+                        shortcuts even if Firefox is not the active window!
+                    </p>
+                    <p>
+                        We are also working on many more experimental features to enhance
+                        the web app experience, such as integrating with
+                        <a href="https://www.mozilla.com/en-US/mobile/sync/">Firefox
+                        Sync</a> to seamlessly synchronize your installed apps
+                        across multiple devices.
+                    </p>
+                </article>
+            </div>
+        </section>
+        
         <hr>
     </div> <!-- wrapper -->
     
