@@ -46,44 +46,39 @@
 
         <section class="clearfix post">
             <div class="singleColumn">
-                <h2>Discover</h2>
+                <h2>Launch</h2>
             </div>
             <div class="doubleColumn">
                 <article class="content">
-                    <div>
-                      <img src="discover.png">
-                    </div>
-                    <p>We've also added experimental support for discovering which web sites provide an installable Web App. The toolbar icon will glow and provide you with a prompt if the extension detects the presence of an installable application.</p>
-                    <p><small><i>Note:</i> Not all Web Applications support discovery, as we have not yet standardized on the mechanism.</small></p>
+                  <p>Once installed, you can launch your installed apps directly from a button in your browser:</p>
+                  <div>
+                    <img src="chrome_click_launch.png">
+                  </div>
+                  <p>Or from the <i>omnibox</i> you can type <tt>app &lt;space&gt; [name]</tt> to quickly search for and launch applications:</p>
+                    <img src="chrome_type_launch.png">
                 </article>
             </div>
         </section>
-        
+
         <section class="clearfix post">
             <div class="singleColumn">
-                <h2>Manage</h2>
+                <h2>Notes</h2>
             </div>
             <div class="doubleColumn">
                 <article class="content">
-                    <div>
-                      <img src="about_apps.png">
-                    </div>
-                    <p>In addition to being able to manage your applications from a dashboard of your choice, you can also manage them via 'about:apps'. Application manifests are also made available for inspection.</p>
+                    <p>The chrome extension is currently pre-alpha code and comes with a couple caveates:</p>
+                    <ul>
+                      <li> Prompting at installation is not yet implemented -- applications will be silently installed.  Prompting
+                        will be implemented as soon as the chrome folks <a href="http://code.google.com/chrome/extensions/experimental.infobars.html">implement infobars</a>.
+                      <li> If you've already installed some apps into your browser before installing the chrome ext, you'll have to re-install, first run application
+                        migration will be implemented in a future release.
+                    </ul>
+                    <p>Finally, we welcome your contributions to this extension, either as <a href="http://github.com/mozilla/openwebapps/tree/master/addons/chrome">code</a>
+                        or <a href="http://groups.google.com/group/mozilla-labs">comments in our mailing list</a>.</p>
                 </article>
             </div>
         </section>
-        
-        <section class="clearfix post">
-            <div class="singleColumn">
-                <h2>Extend</h2>
-            </div>
-            <div class="doubleColumn">
-                <article class="content">
-                    <p>The Web Application extension for Chrome is the ideal vehicle to test deeper desktop integration for Web Apps. To this end, we have added experimental support for propagating media key events (on Windows) to installed applications. With a simple one-line script, you can now control your favorite web-based music player via keyboard shortcuts even if Chrome is not the active window!</p>
-                    <p> We are also working on many more experimental features to enhance the web app experience, such as integrating with <a href="https://www.mozilla.com/en-US/mobile/sync/">Firefox Sync</a> to seamlessly synchronize your installed apps across multiple devices. </p>
-                </article>
-            </div>
-        </section>
+
         
         <hr>
     </div> <!-- wrapper -->
