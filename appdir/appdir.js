@@ -22,7 +22,7 @@ $(document).ready(function() {
         for (var i = 0; i < contents.length; i++) {
             var app = contents[i];
             var e = $("<div />");
-            var button = $("<div />").addClass("button").text("Loading...");
+            var button = $("<div />").addClass("button").html("<img class='loading' src='i/spinner.gif'>");
             button.appendTo(e);
             var icon = $('<img />');
             icon.attr('src', extractIcon(app.manifest, app.origin));
@@ -54,9 +54,9 @@ $(document).ready(function() {
                         if (origin === installed[i].origin) break;
                     }
                     if (i === installed.length) {
-                        $(elem).find(".button").addClass("installable").text("Install")
+                        $(elem).find(".button").addClass("installable").html("<img src='i/download.png'> Install")
                             .click(function() {
-                                $(elem).find(".button").unbind('click').removeClass("installable").text("Loading...");
+                                $(elem).find(".button").unbind('click').removeClass("installable").html("<img class='loading' src='i/spinner.gif'>");
                                 navigator.apps.install(
                                     {
                                         url: $(elem).attr("appManifestURL"),
@@ -65,18 +65,14 @@ $(document).ready(function() {
                                             updateStatus(elem);
                                         },
                                         onerror: function(errObj) {
-                                          if (errObj.code == "denied") {
-                                            // denied doesn't require additional messaging
-                                          } else {
-                                            alert("Installation did not complete: " + errObj.message);
-                                          }
-                                          updateStatus(elem);
+                                            alert("oh no baby, business hours are over: " + errObj.code + " - " + errObj.message);
+                                            updateStatus(elem);
                                         }
                                     }
                                 );
                             });
                     } else {
-                        $(elem).find(".button").addClass("installed").text("Installed!")
+                        $(elem).find(".button").addClass("installed").html("&#x2714; Installed!")
                     }
                 }
 

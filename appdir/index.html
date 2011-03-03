@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mozilla : Web Applications : App Directory</title>
+    <title>Mozilla : App Directory</title>
     <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+    
+    <script type="text/javascript">
+        document.createElement("section");
+        document.createElement("article");  
+        document.createElement("footer");  
+        document.createElement("header");  
+        document.createElement("hgroup");  
+        document.createElement("nav");  
+    </script>
+    
     <link rel="stylesheet" href="../css/960.css" type="text/css" media="screen">
     <link rel="stylesheet" href="appdir.css" type="text/css" media="screen">
     <link rel="shortcut icon" type="image/ico" href="../i/favicon.ico">
 </head>
 
-<body class="messaging">
-    <div id="grid"></div>
+<body class="apps">
     <div id="wrapper">
 
         <header class="clearfix textShadow">
@@ -18,24 +27,22 @@
 
         <section id="about" class="clearfix textShadow">
             <div class="doubleColumn">
-                <h1>Mozilla : Web Applications Demo Apps</h1>
+                <h1>Demo Apps</h1>
                 <article class="elevator">
                     <p>A collection of Awesome Web Apps written by our friends!</p>
                 </article>
             </div>
         </section>
 
-        <hr>
+        <hr class="shadow">
 
         <section id="projectContent" class="clearfix textShadow">
             <div id="contentWrap">
-                <div class="tripleColumn contentBlock" style="text-align: center">
-                  loading...
+                <div class="tripleColumn">
+                    loading...
                 </div>
             </div>
         </section>
-
-        <hr>
 
         <footer class="clearfix sans">
             <ul>

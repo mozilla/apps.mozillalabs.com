@@ -12,11 +12,4 @@ $(document).ready(function($) {
         $('#video').addClass('visible');
     });
     
-    // keyboard shortcuts
-    $(document.documentElement).keyup(function (event) {
-        if (event.keyCode == 71) {
-            $('#grid').fadeToggle(100); // G toggles grid
-        }
-    });
-    
 });

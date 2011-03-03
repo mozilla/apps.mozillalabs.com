@@ -488,6 +488,11 @@ ul#teamList li {
         border: 1px solid #D1CDC2;
     }
     
+    .team span.avatar img {
+        width: 32px;
+        height: 32px;
+    }
+    
     .team h3 {
         line-height: 36px;
         display: inline-block;
