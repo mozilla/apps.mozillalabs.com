@@ -1,0 +1,49 @@
+<html><head><title>Open Web Applications: 
+Integration Between Apps
+</title>
+<link href="techsite.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="nav">
+<div class="header">Open Web Applications<br>
+Technology Overview</div>
+
+<a class="navtech_intro" href="tech_intro.html">Introduction</a><br>
+<a class="navmanifest" href="manifest.html">Application Manifests</a><br>
+<a class="navapp_repo" href="app_repo.html">Application Repositories</a><br>
+
+<a class="navweb_or_native" href="web_or_native.html">Web vs. Browser Repositories</a><br>
+<a class="navmobile" href="mobile.html">Mobile Platforms</a><br>
+<a class="navverification" href="verification.html">Registered and Paid Apps</a><br>
+<a class="navsecurity" href="security.html">Security and Privacy</a><br>
+<a class="navintegration" href="integration.html">Integration Between Apps</a><br>
+
+<br><br><br>
+<div style="border-top:1px solid #d0d0d0">
+<a href="oneFile.html">All in One File</a><br>
+</div>
+</div>
+<div class="docs"><style>.navintegration {font-weight:bold}</style>
+<h3>Integration With the Dashboard and Between Applications</h3>
+<p>While the initial focus of this proposal remains on the minimal set of components required to enable Open Web Applications, there are opportunities in the future to deepen the level of integration between applications and the dashboard (or browser if native support for applications is present).  The types of user experiences that could be enabled include:</p>
+<ul>
+<li>
+<p>An aggregated view of outstanding notifications across all of the user's installed applications.</p>
+</li>
+<li>
+<p>The ability for the user execute a search across all of the information stored inside their applications.</p>
+</li>
+<li>
+<p>Applications to expose "bookmarklet" like functionality, which would cause the browser to include application actions in contextual menus.</p>
+</li>
+<li>
+<p>A <em>service discovery</em> function, which would allow an application to issue a "please find me the user's X" request &mdash; where X could be contacts, photos, updates, favorite movies, or what have you.  This capability is a necessary piece of many emerging web proposals, including the <a href="http://www.oexchange.org/">OExchange</a> and <a href="http://berjon.com/blog/2010/09/dap.html">Powerbox</a> proposals for cross-site user experience integration.</p>
+</li>
+</ul>
+<p>In addition to applications exposing capabilities to the browser, it would also be possible for applications to expose capabilities to each other.  This feature could allow applications to publish and consume content from each other in secure interactions which are moderated by the repository, and controlled by the user.</p>
+<p>The technical support for these types of interactions is already present in modern web browsers in the form of cross document messaging.  The preliminary work that must occur before such features can be considered for inclusion in the specification of Open Web Applications is the development of a framework by which robust versioned APIs can be built on top of HTML5's cross document messaging facilities.  We've begun to explore these first challenges in a parallel experiement, <a href="http://github.com/mozilla/jschannel">JSChannel</a>.</p></div>
+<div class="footer">
+Document revision 10-18-2010; by <a href="http://mozillalabs.com">Mozilla Labs</a>; more at <a href="http://apps.mozillalabs.com">http://apps.mozillalabs.com</a><br>
+</div>
+
+

@@ -1,0 +1,62 @@
+<html><head><title>Open Web Applications: 
+Application Repositories
+</title>
+<link href="techsite.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="nav">
+<div class="header">Open Web Applications<br>
+Technology Overview</div>
+
+<a class="navtech_intro" href="tech_intro.html">Introduction</a><br>
+<a class="navmanifest" href="manifest.html">Application Manifests</a><br>
+<a class="navapp_repo" href="app_repo.html">Application Repositories</a><br>
+
+<a class="navweb_or_native" href="web_or_native.html">Web vs. Browser Repositories</a><br>
+<a class="navmobile" href="mobile.html">Mobile Platforms</a><br>
+<a class="navverification" href="verification.html">Registered and Paid Apps</a><br>
+<a class="navsecurity" href="security.html">Security and Privacy</a><br>
+<a class="navintegration" href="integration.html">Integration Between Apps</a><br>
+
+<br><br><br>
+<div style="border-top:1px solid #d0d0d0">
+<a href="oneFile.html">All in One File</a><br>
+</div>
+</div>
+<div class="docs"><style>.navapp_repo {font-weight:bold}</style>
+<h3>The Application Repository and Dashboard</h3>
+<p>The application repository is a client-side trusted collection of the manifests that the user has installed.</p>
+<p>We have implemented a prototype repository in HTML5 at <code>myapps.mozillalabs.com</code> (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps">wiki</a>), but future repositories could be implemented in <a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository">browser extensions</a> or as part of a web browser platform. <!-- FIXME: I think we have some specific reasons for a hosted repository, which we could explain?  Particularly browser-neutrality and portability --></p>
+<p>The application repository provides a limited, privacy-respecting API to web content, which allows it to interact with other websites to give users a smooth experience of using web applications.  It also powers the <strong>application dashboard</strong>, a rich HTML5 interface to manage and launch applications from the browser.</p>
+<p>If the application repository is implemented by browser makers (or in extensions), a similar API will need to be provided.</p>
+<h4>Install API <a name="install-api"></a></h4>
+<p>Also see the related <a href="http://wiki.mozilla.org/Labs/Apps/MyApps#JS_API">wiki page</a>.</p>
+<p>App stores or specific applications can interact with the repository by including the Javascript from <code>https://myapps.mozillalabs.com/jsapi/include.js</code> and use the <code>AppClient</code> object that is exposed.  In the <code>myapps.mozillalabs.com</code> case, we expose four functions:</p>
+<ul>
+<li>
+<p><code>install({ manifest: &lt;manifest object&gt; , [  authorization_url: &lt;url&gt; ], [ session: &lt;session&gt; ], [ signature: &lt;sig&gt; ], callback: &lt;function&gt; }):</code></p>
+<p>Prompts the user for confirmation of the manifest, possibly checking the installation and application domains against a registry of known malware sites.  If the user consents, the manifest is installed into the repository, along with the hostname of the installing site and a timestamp.  If the installing site does not use SSL, the user will be strongly discouraged from installing the application.   When the installation flow is completed with success or failure, the installing website is notified through the callback.</p>
+<p>The optional authorization_url and signature fields are persisted into local storage along with the manifest, as part of the installation. (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps#install">wiki</a>)</p>
+</li>
+<li>
+<p><code>getInstalled( &lt;callback&gt; ):</code></p>
+<p>returns, through the callback, the installed applications whose URLs are contained by the calling site.  This allows an application to find out whether its manifest has been installed on a browser when the user visits the site. (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps#getInstalled">wiki</a>)</p>
+</li>
+<li>
+<p><code>getInstalledBy( &lt;callback&gt; ):</code></p>
+<p>returns, through the callback, the applications that were installed by the calling domain.  This allows an application directory or store to determine if an application is already installed, during browsing. (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps#getInstalledBy">wiki</a>)</p>
+</li>
+<li>
+<p><code>verify ( [&lt;return-to&gt;], &lt;callback&gt; ):</code></p>
+<p>selects the application whose URL matches the calling site, and initiates the verification flow for that application by loading the authorizationURL of the application.  <!-- FIXME: what happens when more than one matches? --> See <a href="verification.html">The Verification Flow</a>. (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps#verify">wiki</a>)</p>
+</li>
+</ul>
+<!-- FIXME: probably some simple example is called for here? Or link to some examples page on wiki -->
+
+<h4>Mobile Considerations</h4>
+<p>Most mobile platforms already organize themselves around an <em>application launcher</em>.  See the <a href="mobile.html">Mobile Platforms</a> page for more discussion of these platforms.</p></div>
+<div class="footer">
+Document revision 10-18-2010; by <a href="http://mozillalabs.com">Mozilla Labs</a>; more at <a href="http://apps.mozillalabs.com">http://apps.mozillalabs.com</a><br>
+</div>
+
+

@@ -1,0 +1,255 @@
+<html><head><title>Installable Web Applications</title>
+<link href='techsite.css' media='screen' rel='stylesheet' type='text/css' /></head><body><div class='docs'>
+<h2>Open Web Apps Technical Overview</h2>
+<p>This document describes an architecture for <em>Open Web Applications.</em>  These are applications constructed using standard web technologies including HTML5, CSS3, and JavaScript, which can run in any modern web browser  Like today's web applications, they are made with a combination of server-side logic and client-side logic.</p>
+<p>The system presented here provides for both free and paid applications.  It presumes that there will be multiple stores from which users may install applications.  Developers are free to list their applications on multiple stores and to enter independent relationships with each.  Developers should be free to self-publish their application, or create their own curated application directory.  Applications deployed using this system should work on desktop and mobile platforms, and should degrade gracefully when advanced browser capabilities are not present.</p>
+<p>This document is intended as a proposal to the web user and developer community, and direct constructive feedback (<a href="http://groups.google.com/group/mozilla-labs">via the mailing list</a>) is very welcome.  Throughout the document, links to the <a href="wiki.mozilla.org/Labs/Apps/">Mozilla wiki</a> are placed inline where a topic of discussion is raised.  Readers are encouraged to visit the wiki to contribute to the conversation.</p>
+<h3>Overview</h3>
+<p>This proposal defines an <em>Open Web Application</em> in terms of the existing web technology stack.  These applications leverage the HTML5 specification, which describes how a web browser can provide local storage, offline access to applications and data, geolocation services, and rich 2D and 3D graphics capabilities.</p>
+<p>Open Web Applications build upon this HTML5 foundation by adding easy launching, an explicit <a href="http://wiki.mozilla.org/Labs/Apps/Installation">installation flow</a>, and verification of user registration between stores and applications (enabling <a href="http://wiki.mozilla.org/Labs/Apps/Proof_Of_Purchase">proof of purchase</a>).  This basic set of interactions requires no new browser features and should work in any <a href="http://wiki.mozilla.org/Labs/Apps/Browser_Support">modern web browser</a>.  Richer interactions are also described which would be made possible by native browser support (that may be built-in, or supplied via browser extensions).</p>
+<p>Using this system, a user can navigate through a collection of applications in a store or directory, select one to install, provide payment information if needed, and receive the installed application into a "dashboard" that holds all of his or her applications.  When the user subsequently launches the application (by mouse, keyboard, or followed link), the application should be able to verify the user's ownership immediately, so that the user experiences a "one click" launch into a personalized application.</p>
+<p>It is not a goal of this proposal to explain how an all-HTML5 application can be downloaded to a desktop computer and subsequently protected from copying.  The focus of the payment proposal is on online verification of user proof-of-install, or proof-of-purchase (in other words, how web apps can work with a <a href="http://en.wikipedia.org/wiki/Key_server_%28software_licensing%29">license server</a>). <!-- FIXME: "It is not a goal" is kind of confusing; it is not a goal of the project, or of this document to explain? --></p>
+<p>The basic set of concepts required to enable Open Web Applications are:</p>
+<ul>
+<li>
+<p><a href="manifest.html"><strong>Application manifests</strong></a>, which describes the location, requirements, and capabilities of an application.</p>
+</li>
+<li>
+<p>An <a href="app_repo.html"><strong>application repository</strong></a>, which holds the manifests for all of the user's installed applications.</p>
+</li>
+<li>
+<p>A <a href="app_repo.html#install-api"><strong>method to install</strong></a> an application into a user's repository, which can be used by stores and directories or by an application developer (for self-published applications).</p>
+</li>
+<li>
+<p>A <a href="app_repo.html"><strong>application dashboard</strong></a>, which is a user interface through which to manage, browse, and launch installed applications.</p>
+</li>
+<li>
+<p>An optional network interaction to allow applications to <a href="verification.html"><strong>confirm the user's ownership</strong></a> of a paid registration (i.e. from an application store).</p>
+</li>
+</ul>
+<p>This proposal assumes that the application repository resides in the local storage of the user's browser.  It is a relatively simple step to imagine <a href="http://wiki.mozilla.org/Labs/Apps/Server_Repositories">server-based repositories</a>, or to use <a href="http://wiki.mozilla.org/Labs/Apps/Repository_Synchronization">web browser synchronization techniques</a> to copy application manifests between browser instances.</p>
+<p>We have created a prototype repository and an application dashboard which are written entirely in HTML5 and are hosted at <a href="http://myapps.mozillalabs.com">myapps.mozillalabs.com</a> (<a href="http://wiki.mozilla.org/Apps/Labs/MyApps">wiki notes on myapps</a>).  The ability to install applications and verify user registration is exposed to applications through a <a href="http://wiki.mozilla.org/Labs/Apps/JSChannel">JavaScript library</a> that uses the HTML5 <code>postMessage</code> API to securely communicate between the application and the <code>myapps</code> domain.</p>
+<p>The capabilities of the repository and dashboard could equally be provided by <a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository">browser-native functions</a>, with some security benefits.  <!-- FIXME: should it be noted that we are committed to this hosted solution, and that browser-native would not *replace* the hosted solution, just augment it? --> Note that although the code for the dashboard is provided by <code>myapps.mozillalabs.com</code>, users' installed application manifests are stored entirely on their local browsers.  The <code>myapps</code> server has no database of users or apps, and issues no cookies to its users; it serves only to provide a JavaScript program which runs entirely inside the browser.</p>
+<h3>Sections</h3>
+<p>Use the navigation bar, at left, to browse the sections of this document.</p>
+<p>Alternatively, you may view the entire document as <a href="oneFile.html">one large file.</a></p><h3>The Application Manifest</h3>
+<p>See also the <a href="http://wiki.mozilla.org/Labs/Apps/Manifest">wiki page on Application Manifests</a>.</p>
+<p>The Manifest is a complete description of what the web browser needs to interact with the application.  It provides both human-readable elements (a name, a set of icons, and a description; possibly in multiple languages) and machine-readable elements (URLs, lists of capabilities), which allow the application repository and dashboard to display and launch applications.</p>
+<p>The Manifest is encoded as a JSON data structure, and is provided to the browser when the application is installed.  The manifest is persisted in local storage and is used by the dashboard and repository for subsequent interactions with the user.</p>
+<p>When an application is self-published the application developer provides the manifest directly.  When a store or curated directory publishes the application, the store or directory provides the manifest, and is free to inspect it prior to publication. <!-- FIXME: is the store free to modify it as well?  What is the authority of a manifest?  This could be answered/discussed with a wiki link. --></p>
+<p>For detailed description of the manifest, and discussion of its design, visit <a href="http://wiki.mozilla.org/Labs/Apps/Manifest">the wiki</a>.  (Note that the design of the manifest is intended to build on and comment on existing work by Google on <a href="http://code.google.com/chrome/apps/docs/developers_guide.html#live">hosted web application manifests</a>; please see the wiki for more in-depth discussion)</p>
+<p>For a discussion of the security and privacy considerations around the application manifest, please see <a href="security.html">Security and Privacy Considerations</a>.  In particular, for a discussion of using digital signatures to create tamper-evident manifests, see <a href="http://wiki.mozilla.org/Labs/Apps/Manifest#Signatures">the wiki</a>.</p>
+<h4>An Example Manifest</h4>
+<pre><code>{
+  "name": "MozillaBall",
+  "description": "Exciting Open Web development action!",
+
+  "base_url": "https://mozillaball.mozillalabs.com",
+  "launch_path": "",
+  "update_path": "manifest/manifest.json",
+
+  "app_urls": [
+    "https://mozillaball.mozillalabs.com/"
+  ],
+
+  "capabilities": [
+    "geolocation"
+  ],
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "developer": {
+    "name": "Mozilla Labs",
+    "url": "http://mozillalabs.com"
+  }
+  "locales": {
+    "es": {
+      "description": "¡Acción abierta emocionante del desarrollo del Web!",
+      "developer": {
+        "url": "http://es.mozillalabs.com/",
+      }
+    },
+    "it": {
+      "description": "Azione aperta emozionante di sviluppo di fotoricettore!",
+      "developer": {
+        "url": "http://it.mozillalabs.com/"
+      }
+    }
+  },
+  "release": "2010-10-05T09:12:51Z"
+}
+</code></pre>
+<h4>Discussion of the fields</h4>
+<p>For detailed technical discussion of the manifest, please visit <a href="http://wiki.mozilla.org/Labs/Apps/Manifest">the wiki</a>.  Informally, the meanings of the fields are:</p>
+<ul>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#name"><strong>name</strong></a>: A human-readable name for the application.</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#description"><strong>description</strong></a>: A plain-text human-readable description of the application.</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#base_url"><strong>base_url</strong></a>: The URL that is used as a base for relative URLs which follow.  The base_url must belong to the application.</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#launch_path"><strong>launch_path</strong></a>: The path that is appended to base_url to create the "launch URL" for the application, which is the page that is loaded when the application starts.</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#update_path"><strong>update_path</strong></a>: (optional) The path that is appended to base_url to create the "update URL" for the application, which must return a manifest.  Application repositories should check for a new manifest periodically and apply the update to their local repository copy if the manifest found there is newer than the local copy. <!-- FIXME: if this is the case, then stores should not be able to provide a manifest themselves, as it could be immediately wiped by this update, and because of URL restrictions the store can't rewrite this path to something store-specific --></p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#app_urls"><strong>app_urls</strong></a>: A list of URL prefixes, which must contain at least a scheme and hostname, but may optionally have a path portion.  Any URL that begins with one these URL prefixes, with a full match on the scheme, hostname, and port of the manifest URL, is said to "belong" to the application, and should be consolidated into a single browsing experience by an application-aware browser.  Incomplete hostnames, e.g. "http://www", will fail to match any application and are invalid.  base_url must be included in the set defined by app_urls, and the manifest is invalid if it is not.</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#capabilities"><strong>capabilities</strong></a>: a list of string tokens describing advanced web browser capabilities that the application requests.  Browser-native application repositories should prompt the user for permission to use these capabilities at installation time; the user is free to deny access to any or all of these permission requests, but this may cause the application to behave incorrectly.</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#icons"><strong>icons</strong></a>: a map of icon sizes to URLs, which are interpreted relative to the base_url, which should contain square images suitable for use as application icons.  data URLs are legal in this field.</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#developer"><strong>developer</strong></a>: information about the developer of the application, suitable for use in repository and dashboard UIs</p>
+<ul>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#developer.name"><strong>name</strong></a>: the name of the developer</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#developer.url"><strong>url</strong></a>: the URL of an information site for the developer; the developer is free to place a URL that provides more detailed information about this app in this field</p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#locales"><strong>locales</strong></a>: a map of local-specific overrides on the data contained in the manifest, which UIs should use to provide localized views.  Each locale entry is keyed on a local code, and contains a sparse representation of the manifest; any field that is present in the locale value should override the matching field in the manifest.  Locales are not allowed to override the capabilities field; a manifest that does so is invalid.</p>
+</li>
+<li>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Manifest#release"><strong>release</strong></a>: A timestamp in ISO 8601 format representing when this version of the manifest came into effect (see below)</p>
+</li>
+</ul>
+<h4>On Updating</h4>
+<p>Note that, because the logic for a web application is loaded using the normal rules for web caching, and may optionally use <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#offline">HTML5 AppCache</a> for bulk caching, there is no need to deploy new versions of the manifest or the application to clients.  In normal operation, when the web application is updated, the client notes the presence of new content, and downloads it automatically, with no need for user interaction.  <!-- FIXME: this confused me; I think I know what it means, but maybe it can be reworded? --></p>
+<p>The manifest update mechanism is provided only for those situations where the manifest must actually change.  This could include a new URL, a new web browser capability, or a change to the icon, descriptive text, or localized strings.  The release date contained in the manifest is the only source of versioning data for this operation. <!-- FIXME: Why couldn't manifest updating be based on the same cache rules? --></p><h3>The Application Repository and Dashboard</h3>
+<p>The application repository is a client-side trusted collection of the manifests that the user has installed.</p>
+<p>We have implemented a prototype repository in HTML5 at <code>myapps.mozillalabs.com</code> (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps">wiki</a>), but future repositories could be implemented in <a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository">browser extensions</a> or as part of a web browser platform. <!-- FIXME: I think we have some specific reasons for a hosted repository, which we could explain?  Particularly browser-neutrality and portability --></p>
+<p>The application repository provides a limited, privacy-respecting API to web content, which allows it to interact with other websites to give users a smooth experience of using web applications.  It also powers the <strong>application dashboard</strong>, a rich HTML5 interface to manage and launch applications from the browser.</p>
+<p>If the application repository is implemented by browser makers (or in extensions), a similar API will need to be provided.</p>
+<h4>Install API <a name="install-api"></a></h4>
+<p>Also see the related <a href="http://wiki.mozilla.org/Labs/Apps/MyApps#JS_API">wiki page</a>.</p>
+<p>App stores or specific applications can interact with the repository by including the Javascript from <code>https://myapps.mozillalabs.com/jsapi/include.js</code> and use the <code>AppClient</code> object that is exposed.  In the <code>myapps.mozillalabs.com</code> case, we expose four functions:</p>
+<ul>
+<li>
+<p><code>install( &lt;manifest&gt; , [ &lt;authorizationURL&gt; ], [ &lt;signature&gt; ], &lt;callback&gt;):</code></p>
+<p>prompts the user for confirmation of the manifest, possibly checking the installation and application domains against a registry of known malware sites.  If the user consents, the manifest is installed into the repository, along with the hostname of the installing site and a timestamp.  If the installing site does not use SSL, the user will be strongly discouraged from installing the application.   When the installation flow is completed with success or failure, the installing website is notified through the callback.</p>
+<p>the optional authorizationURL and signature fields are persisted into local storage along with the manifest, as part of the installation. (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps#install">wiki</a>)</p>
+</li>
+<li>
+<p><code>getInstalled( &lt;callback&gt; ):</code></p>
+<p>returns, through the callback, the installed applications whose URLs are contained by the calling site.  This allows an application to find out whether its manifest has been installed on a browser when the user visits the site. (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps#getInstalled">wiki</a>)</p>
+</li>
+<li>
+<p><code>getInstalledBy( &lt;callback&gt; ):</code></p>
+<p>returns, through the callback, the applications that were installed by the calling domain.  This allows an application directory or store to determine if an application is already installed, during browsing. (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps#getInstalledBy">wiki</a>)</p>
+</li>
+<li>
+<p><code>verifyIdentity ( [&lt;return-to&gt;], &lt;callback&gt; ):</code></p>
+<p>selects the application whose URL matches the calling site, and initiates the verification flow for that application by loading the authorizationURL of the application.  <!-- FIXME: what happens when more than one matches? --> See <a href="verification.html">The Verification Flow</a>. (<a href="http://wiki.mozilla.org/Labs/Apps/MyApps#verifyIdentity">wiki</a>)</p>
+</li>
+</ul>
+<!-- FIXME: probably some simple example is called for here? Or link to some examples page on wiki -->
+
+<h4>Mobile Considerations</h4>
+<p>Most mobile platforms already organize themselves around an <em>application launcher</em>.  See the <a href="mobile.html">Mobile Platforms</a> page for more discussion of these platforms.</p><h3>HTML5 implementation vs. browser-native implementation</h3>
+<p>The prototype <a href="http://wiki.mozilla.org/Labs/Apps/MyApps"><code>myapps.mozillalabs.com</code></a> repository can be referenced in any website through a simple JavaScript include.  It provides the <code>install</code>, <code>getInstalled</code>, <code>getInstalledBy</code>, and <code>verify</code> methods through a secure cross-domain messaging API.    The <code>myapps.mozillalabs.com</code> dashboard can be loaded by simply navigating to the site in a browser.  It displays the currently installed applications, and launches them when they are clicked.</p>
+<p>Note that we do not propose making <code>myapps.mozillalabs.com</code> a permanent delivery point for an application dashboard; see the <a href="security.html">Security and Privacy Considerations</a> section for a discussion of a longer-term strategy. <!-- FIXME: also a wiki link here? --></p>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository">Browser-native implementations</a> can take deeper security measures, and integrate more with desktop and mobile operating systems, than a pure web-content dashboard.  We propose that experimental integration with browser-native functions be organized under a "window.navigator.apps" object.  New methods can be attached at this point and made available, in a limited way, to browser-native or web-based application dashboards.</p>
+<h4>Native application features</h4>
+<p>Specific directions for browser integration include:</p>
+<ul>
+<li>
+<p>Implementation of an installed application repository that resides in secure, tamper-evident desktop storage (e.g. with a digital signature), with a more secure installation flow. (<a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repositories#Security">wiki</a>)</p>
+</li>
+<li>
+<p>Ability to launch applications into an "app tab" or "pinned tab" that has a fixed location in the tab bar, or in a separate process with its own icon, menu-bar, etc. (<a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository#AppTab">wiki</a>)</p>
+</li>
+<li>
+<p>Access to OS-level notification systems - see the <a href="<a href="http://www.w3.org/2010/web-notifications/">W3C working group on Web Notifications</a>. (<a href="http://wiki.mozilla.org/Labs/Apps/Notifications">wiki</a>)</p>
+</li>
+<li>
+<p>Use of the <code>capabilities</code> field of the manifest for integration with browser-based permission APIs, including camera, microphone, geolocation, storage, file access, and cross-domain network access - see the <a href="http://www.w3.org/2009/dap/">W3C Device APIs and Policy</a> working group, especially the <a href="http://www.w3.org/TR/2010/WD-api-perms-20101005/">Permissions for Device API Access</a> working draft, for some current work on this. (<a href="http://wiki.mozilla.org/Labs/Apps/Capabilities">wiki</a>)</p>
+</li>
+<li>
+<p>Ability to launch applications into a "chromeless" mode (with no toolbars, location bar, or forward or backward buttons). (<a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository#Chromeless">wiki</a>)</p>
+</li>
+<li>
+<p>Ability to launch <a href="http://www.whatwg.org/specs/web-workers/current-work/">web workers</a> to perform background processing or notification polling. (<a href="http://wiki.mozilla.org/Labs/Apps/Background_Processing">wiki</a>)</p>
+</li>
+<li>
+<p>Integration with push-based notification or message delivery systems. (<a href="http://wiki.mozilla.org/Labs/Apps/Notifications#Push">wiki</a>)</p>
+</li>
+</ul>
+<p>Any access to browser or OS-level functionality should require a more stringent installation step, and may require verification of the manifest - see <a href="security.html">Security and Privacy Considerations</a>.</p><h3>Mobile User Interactions</h3>
+<p>Most smartphone and tablet computing platforms are already application-centric.  The Installed Web Applications proposal aims to standardize the requirements for deployment of web applications across all mobile platforms and to clarify how developers can optionally charge for those applications.</p>
+<p>In most cases, application directories or stores can perform the "heavy lifting" of platform integration.</p>
+<p>The installation flow on a mobile device must validate the manifest, present a request for permissions to the user, and create a data structure that causes the application to appear in the normal location for the device.  For unregistered applications, launching the application should simply open a navigation-free web browser instance, preloaded with the application's launchURL.  For registered and paid applications, the browser should be directed to the authorizationURL of the application, which can validate the user and direct the browser to the application's launchURL with a validated identity and purchase token.</p>
+<p><em>Example</em>: Apple Computer's iOS provides excellent display and launching of web applications from the default application launcher.  JavaScript extensions exist on the Mobile Safari platform to determine whether the application is being viewed in Safari, or as a standalone ("webclip") application.  Application stores that wish to provide proof-of-purchase verification to web applications can easily save their verification URL as the target URL of the webclip, and can verify the user's registration and forward to the application on startup; caching of this verification for a reasonable period can reduce the latency of startup to create a faster launch experience.</p>
+<h4>Offline Use</h4>
+<p>To support offline use, developers should make use of HTML5 AppCache and localStorage to enable the local components of their application to run without network access.  Application stores are encouraged to provide an option for local caching of registration and payment assertions, to allow a developer to indicate that they do not require online verification for every run; in many cases, a single check, or a weekly/monthly check is sufficient.</p>
+<h4>Multiplatform Development</h4>
+<p>Developers are encouraged to use cross-platform JavaScript toolkits to target multiple mobile platforms.  For further reading, see <a href="http://www.sencha.com/products/touch/">Sencha</a> and <a href="http://jquerymobile.com/">jQuery Mobile</a>.</p><h3>Self-Published, Free, Registered, and Paid Apps</h3>
+<p>This system supports a wide range of potential application deployment models.</p>
+<p>A <em>self-published</em> application can be created by a developer.  The developer creates a manifest and places a call to the <code>install</code> method on their website, driven by a button or link.  When the user clicks, the repository prompts the user for confirmation, and adds the application to the user's dashboard.  If the application requests additional permissions, the user is prompted to confirm them.  This process is essentially identical to the existing process of using a web site and bookmarking it, but adds a simplifying metaphor to the experience.</p>
+<p>An application directory is simply a web site, and may provide additional tools to help a user find the applications they want &mdash; perhaps including search, rankings, social features, discussion boards, reviews, etc.</p>
+<p>An application directory can provide <em>free</em> and <em>registered</em> applications.  When the user clicks to add a <em>free</em> application, the site calls the <code>install</code> method, the user is prompted for confirmation, and the application is added to the dashboard.</p>
+<p>A <em>registered</em> application is one that provides a user identity to the application, providing a single-sign on experience to the user.  In the <em>registered</em> case, an authorizationURL is also saved with the manifest.  The application can subsequently request user verification, which will cause the browser to send the user to the application directory for identity verification (mostly likely using cookie and form-based authentication), returning immediately, and in most cases imperceptibly, to the application with an identity token.</p>
+<p>By adding payment-processing features, an application directory becomes a store, and supports <em>paid</em> applications.  A paid application adds proof-of-purchase to a registered application.  When the application requests user verification, the browser sends the user to the store for identity verification, and the store sends the user back to the application bearing both an identity token and a cryptographically-secure proof-of-purchase.</p>
+<h3>The Verification Flow</h3>
+<p>The goal of this flow is to allow a user to load a purchased or registered application and, without presenting any additional credentials, receive an authenticated and personalized experience.  This proposal does not require any one federated authentication solution, but provides a simple system to initiate federated login for a particular user-store-application combination.</p>
+<p>The verification flow is very similar to a directed OpenID authentication flow, and store implementors may choose to adopt that flow for verification.  In that case, an OpenID attribute containing the application ID that was successfully verified would be sent in the response, along with the user identity.  One notable difference from the OpenID 2.0 use case is that the application store can be confident of the realm, so the need for a <code>return_to</code> or <code>realm</code> argument is relaxed.  An OpenID attribute could carry additional information, such as an application ID, or an expiration date or subscription period.</p>
+<p>Note that there is no requirement that the application store provide a <em>global identifier</em> for the user.  The verification flow requires only that the store provide proof-of-purchase to the application.  Some application stores might choose to provide an identifier which only identifies a user within an application, others might choose to create globally unique IDs for users, and another may provide the user an option to choose.</p>
+<h4>Verification for offline use</h4>
+<p>An application that has been installed using HTML5 AppCache will be available to the browser even when the user's computer is disconnected from the network.  Applications are encouraged to use cookies or HTML5 local storage techniques to persist an access token, good for some "grace period" of time, which is used before the application repeats the verification flow.  Any access token that is positioned locally can be tampered with by a diligent attacker; if an application is truly concerned about secure offline verification, cryptography will be required.  See wiki:Verification#Offline{need real url here} for more discussion on this point.</p><h3>Security and Privacy Considerations</h3>
+<p>Here we present some of our analysis of the possible security and privacy attacks on this system, and the countermeasures we can take against them.</p>
+<h4>Attacks on applications following installation</h4>
+<p>Once the application manifest has been installed on a user's computer, an attacker may try to tamper with the manifest in order to manipulate the user.  These attacks include:</p>
+<ul>
+<li>
+<p><strong>Tampering with the application manifest in local storage:</strong> If the attacker is able compromise a web-based dashboard, or gain file system access through a different attack vector, they may be able to tamper with the application manifest.  (Note that if the attacker has access to the file system, they can probably replace the web browser, so this consideration may be theoretical).  This kind of tampering can be detected by using tamper-evident signatures, e.g. through digital signatures.  For more on this approach, see wiki:Manifests#Signatures.  Any manifest that extends higher API privileges to an application should be subject to some sort of verification.</p>
+</li>
+<li>
+<p><strong>Interception of the user during application launch:</strong> If the attacker is able to intercept the user during the launch of an application (e.g. through man-in-the-middle), they could construct a phishing site that appears to be an application store and attempt to steal the user's credentials.  This is identical to the problem faced by many federated login providers in systems like OpenID.  Existing systems to detect and block malware sites can help with this problem, which is not unique to the web application use case.</p>
+</li>
+</ul>
+<h4>Attacks on the HTML5 repository and dashboard</h4>
+<p>The prototype dashboard deployed at <code>myapps.mozillalabs.com</code> could be an attack vector if an attacker could succesfully impersonate the server providing the dashboard code, e.g. with a man-in-the-middle attack.  The attacker could read the set of installed applications, install deviously constructed application manifests, or vandalize the current set of applications.  The attacker could not steal the user's credentials with the store or the application, since those are not present in the manifest or the installation record.</p>
+<p>Countermeasures for this threat include requiring HTTPS for all interaction with the dashboard server, to make sure the origin of the dashboard and repository code is trusted.</p>
+<p>If a serious effort is made to support a cross-browser HTML5 dashboard, issues of governance, version control, and operational security will need to be jointly addressed by stakeholders.  An existing technical coordination group could take on the job, or a new independent organization could be created and jointly funded by the browser makers.</p>
+<p>If, on the other hand, application repositories are going to live entirely in browser-private storage, the HTML5 dashboard becomes less important and is an uninteresting attack target.</p>
+<h4>Attacks on the verification flow</h4>
+<p>An attacker may attempt to capture the verification token from a store to a web app to re-use it or attempt to recover the private key of the store.  Stores are encouraged to use a non-replayable verification token, and to ensure that the token does not allow an attacker to escalate their access by claiming to be another user, or to verify a different application.  The use of digital signatures in the verification token is encouraged.</p>
+<h4>Reuse or compromise of application store accounts</h4>
+<p>Users may accidentally, unknowingly, or maliciously share logins to an application store.  Application stores are free to implement whatever sort of login counters they wish to detect this behavior, and are free to interrupt the verification flow to indicate to users that there appear to be multiple uses of an account.  Note that if a store implements offline verification tokens, they will need their verification page to check back with the store periodically to determine whether an account compromise has been detected.</p>
+<h4>Convincing the user to install bad applications</h4>
+<p>A malicious site, directory, or store could attempt to convince a user to install an application that abused the user's confidence in some way.  The most serious attacks would involve accessing the privileged APIs of the browser, and, as noted above, should require some sort of verification and a trusted source.  Less serious, but still potentially troubling, attacks could involve manipulating the identity token provided by a store to enable cross-domain tracking of the user.  The countermeasures for this class of attack are essentially identical to those required for browser add-ons and downloads: tracking of malware sites, strongly-worded user warnings, and the ability to return the system to a previously-saved state.</p>
+<p>When installing from a malicious site, an HTML repository that depends on iframes for the installation flow could be vulnerable to an iframe defacement attack.  This attack could partially obscure the confirmation dialog to hide the true nature of the application being installed.  A native application repository would not have this problem.  A repository that did not use iframes for the confirmation flow would not be vulnerable to this attack; in addition, the <a href="http://people.mozilla.com/~bsterne/content-security-policy/">Content Security Policy</a> proposal, which is implemented in Firefox 4, can block this attack.</p><h3>Integration With the Dashboard and Between Applications</h3>
+<p>While the initial focus of this proposal remains on the minimal set of components required to enable Open Web Applications, there are opportunities in the future to deepen the level of integration between applications and the dashboard (or browser if native support for applications is present).  The types of user experiences that could be enabled include:</p>
+<ul>
+<li>
+<p>An aggregated view of outstanding notifications across all of the user's installed applications.</p>
+</li>
+<li>
+<p>The ability for the user execute a search across all of the information stored inside their applications.</p>
+</li>
+<li>
+<p>Applications to expose "bookmarklet" like functionality, which would cause the browser to include application actions in contextual menus.</p>
+</li>
+<li>
+<p>A <em>service discovery</em> function, which would allow an application to issue a "please find me the user's X" request &mdash; where X could be contacts, photos, updates, favorite movies, or what have you.  This capability is a necessary piece of many emerging web proposals, including the <a href="http://www.oexchange.org/">OExchange</a> and <a href="http://berjon.com/blog/2010/09/dap.html">Powerbox</a> proposals for cross-site user experience integration.</p>
+</li>
+</ul>
+<p>In addition to applications exposing capabilities to the browser, it would also be possible for applications to expose capabilities to each other.  This feature could allow applications to publish and consume content from each other in secure interactions which are moderated by the repository, and controlled by the user.</p>
+<p>The technical support for these types of interactions is already present in modern web browsers in the form of cross document messaging.  The preliminary work that must occur before such features can be considered for inclusion in the specification of Open Web Applications is the development of a framework by which robust versioned APIs can be built on top of HTML5's cross document messaging facilities.  We've begun to explore these first challenges in a parallel experiement, <a href="http://github.com/mozilla/jschannel">JSChannel</a>.</p></div>
+<div class="footer">
+Document revision 10-18-2010; by <a href="http://mozillalabs.com">Mozilla Labs</a>; more at <a href="http://apps.mozillalabs.com">http://apps.mozillalabs.com</a><br>
+</div>
+
+

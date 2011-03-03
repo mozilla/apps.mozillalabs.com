@@ -1,0 +1,61 @@
+<html><head><title>Open Web Applications: 
+Web vs. Browser Repositories
+</title>
+<link href="techsite.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="nav">
+<div class="header">Open Web Applications<br>
+Technology Overview</div>
+
+<a class="navtech_intro" href="tech_intro.html">Introduction</a><br>
+<a class="navmanifest" href="manifest.html">Application Manifests</a><br>
+<a class="navapp_repo" href="app_repo.html">Application Repositories</a><br>
+
+<a class="navweb_or_native" href="web_or_native.html">Web vs. Browser Repositories</a><br>
+<a class="navmobile" href="mobile.html">Mobile Platforms</a><br>
+<a class="navverification" href="verification.html">Registered and Paid Apps</a><br>
+<a class="navsecurity" href="security.html">Security and Privacy</a><br>
+<a class="navintegration" href="integration.html">Integration Between Apps</a><br>
+
+<br><br><br>
+<div style="border-top:1px solid #d0d0d0">
+<a href="oneFile.html">All in One File</a><br>
+</div>
+</div>
+<div class="docs"><style>.navweb_or_native {font-weight:bold}</style>
+<h3>HTML5 implementation vs. browser-native implementation</h3>
+<p>The prototype <a href="http://wiki.mozilla.org/Labs/Apps/MyApps"><code>myapps.mozillalabs.com</code></a> repository can be referenced in any website through a simple JavaScript include.  It provides the <code>install</code>, <code>getInstalled</code>, <code>getInstalledBy</code>, and <code>verify</code> methods through a secure cross-domain messaging API.    The <code>myapps.mozillalabs.com</code> dashboard can be loaded by simply navigating to the site in a browser.  It displays the currently installed applications, and launches them when they are clicked.</p>
+<p>Note that we do not propose making <code>myapps.mozillalabs.com</code> a permanent delivery point for an application dashboard; see the <a href="security.html">Security and Privacy Considerations</a> section for a discussion of a longer-term strategy. <!-- FIXME: also a wiki link here? --></p>
+<p><a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository">Browser-native implementations</a> can take deeper security measures, and integrate more with desktop and mobile operating systems, than a pure web-content dashboard.  We propose that experimental integration with browser-native functions be organized under a "window.navigator.apps" object.  New methods can be attached at this point and made available, in a limited way, to browser-native or web-based application dashboards.</p>
+<h4>Native application features</h4>
+<p>Specific directions for browser integration include:</p>
+<ul>
+<li>
+<p>Implementation of an installed application repository that resides in secure, tamper-evident desktop storage (e.g. with a digital signature), with a more secure installation flow. (<a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repositories#Security">wiki</a>)</p>
+</li>
+<li>
+<p>Ability to launch applications into an "app tab" or "pinned tab" that has a fixed location in the tab bar, or in a separate process with its own icon, menu-bar, etc. (<a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository#AppTab">wiki</a>)</p>
+</li>
+<li>
+<p>Access to OS-level notification systems - see the <a href="http://www.w3.org/2010/web-notifications/">W3C working group on Web Notifications</a>. (<a href="http://wiki.mozilla.org/Labs/Apps/Notifications">wiki</a>)</p>
+</li>
+<li>
+<p>Use of the <code>capabilities</code> field of the manifest for integration with browser-based permission APIs, including camera, microphone, geolocation, storage, file access, and cross-domain network access - see the <a href="http://www.w3.org/2009/dap/">W3C Device APIs and Policy</a> working group, especially the <a href="http://www.w3.org/TR/2010/WD-api-perms-20101005/">Permissions for Device API Access</a> working draft, for some current work on this. (<a href="http://wiki.mozilla.org/Labs/Apps/Manifests#Capabilities">wiki</a>)</p>
+</li>
+<li>
+<p>Ability to launch applications into a "chromeless" mode (with no toolbars, location bar, or forward or backward buttons). (<a href="http://wiki.mozilla.org/Labs/Apps/Browser_Native_Repository#Chromeless">wiki</a>)</p>
+</li>
+<li>
+<p>Ability to launch <a href="http://www.whatwg.org/specs/web-workers/current-work/">web workers</a> to perform background processing or notification polling. (<a href="http://wiki.mozilla.org/Labs/Apps/Background_Processing">wiki</a>)</p>
+</li>
+<li>
+<p>Integration with push-based notification or message delivery systems. (<a href="http://wiki.mozilla.org/Labs/Apps/Notifications#Push">wiki</a>)</p>
+</li>
+</ul>
+<p>Any access to browser or OS-level functionality should require a more stringent installation step, and may require verification of the manifest - see <a href="security.html">Security and Privacy Considerations</a>.</p></div>
+<div class="footer">
+Document revision 10-18-2010; by <a href="http://mozillalabs.com">Mozilla Labs</a>; more at <a href="http://apps.mozillalabs.com">http://apps.mozillalabs.com</a><br>
+</div>
+
+
