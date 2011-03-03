@@ -68,10 +68,20 @@ body #video.visible {
     height: 189px;
 }
     
-body section.post p {
+body section.post article {
     font-size: 14px;
     line-height: 21px;
+}
+    
+body section.post p,
+body section.post ul {
     margin: 0 0 21px 0;
+}
+
+body section.post h2 {
+    margin: 0 0 21px 0;
+    font-size: 21px;
+    line-height: 21px;
 }
 
 body section.post h3 {

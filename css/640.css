@@ -25,10 +25,12 @@ body .elevator {
 body .cssColumn {
     -webkit-column-count: 1;
        -moz-column-count: 1;
+         -o-column-count: 1;
             column-count: 1;
             
     -webkit-column-gap: 0;
        -moz-column-gap: 0;
+         -o-column-gap: 0;
             column-gap: 0;
 }
 
@@ -70,6 +72,10 @@ body .singleColumn.third {
 
 body #video.visible {
     height: 369px;
+}
+
+body section.post h2 {
+    text-align: left;
 }
 
 body #hackList p {

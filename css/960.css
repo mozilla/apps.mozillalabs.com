@@ -14,6 +14,7 @@ INFO:     Mozilla Labs WebApps Page
     
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
+         -o-box-sizing: border-box;
             box-sizing: border-box;
 }
 
@@ -56,9 +57,10 @@ hr {
 }
 
 hr.shadow {
-    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.25);
-       -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.25);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.5);
+       -moz-box-shadow: 0 0 3px rgba(0,0,0,0.5);
+         -o-box-shadow: 0 0 3px rgba(0,0,0,0.5);
+            box-shadow: 0 0 3px rgba(0,0,0,0.5);
 }
 
 .right {
@@ -78,6 +80,7 @@ hr.shadow {
     line-height: 28px;
     margin-top: 21px;
     padding: 0 160px 0 0;
+    display: block;
 }
 
 .aboutQuote {
@@ -93,10 +96,12 @@ hr.shadow {
 .cssColumn {
     -webkit-column-count: 2;
        -moz-column-count: 2;
+         -o-column-count: 2;
             column-count: 2;
             
     -webkit-column-gap: 20px;
        -moz-column-gap: 20px;
+         -o-column-gap: 20px;
             column-gap: 20px;
 }
 
@@ -124,7 +129,7 @@ a img {
 
 button {
     background-color: #fff;
-    border: 1px solid #D1CDC2;
+    border: 1px solid #bbb;
     padding: 10px 20px;
     font-size: 12px;
     cursor: pointer;
@@ -134,6 +139,7 @@ button {
     
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
+         -o-border-radius: 5px;
             border-radius: 5px;
 }
 
@@ -142,25 +148,15 @@ button:active {
     
     -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
        -moz-box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
+         -o-box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
             box-shadow: 0 0 3px rgba(0,0,0,0.75) inset, 0 0 20px rgba(0,0,0,0.25) inset;
 }
 
 button img {
-    vertical-align: bottom;
+    vertical-align: text-bottom;
 }
 
 /* columns */
-
-#grid {
-    position: fixed;
-    height: 100%;
-    width: 960px;
-    left: 50%;
-    margin-left: -480px;
-    display: none;
-    background-image: url("../i/grid.png");
-    z-index: 100;
-}
 
 .singleColumn,
 .doubleColumn,
@@ -168,6 +164,7 @@ button img {
     float: left;
     display: inline-block;
     margin: 0 10px;
+    min-height: 1px;
 }
 
 .singleColumn {
@@ -220,6 +217,7 @@ header {
         
         -webkit-transition: opacity 0.2s ease-out;
            -moz-transition: opacity 0.2s ease-out;
+             -o-transition: opacity 0.2s ease-out;
                 transition: opacity 0.2s ease-out;
     }
     
@@ -244,6 +242,10 @@ header {
         line-height: 36px;
     }
 
+article {
+    display: block;
+}
+
 section {
     display: block;
     position: relative;
@@ -252,7 +254,7 @@ section {
 
 section#about {
     padding: 10px 0 30px;
-    min-height: 200px;
+    min-height: 225px;
     background-image: url("../i/header.png");
     background-position: right bottom;
     background-repeat: no-repeat;
@@ -284,6 +286,7 @@ section#about {
     
     -webkit-transition: height 0.4s, opacity 1s 0.4s cubic-bezier(0.0, 0.0, 0.0, 1.0);
        -moz-transition: height 0.4s, opacity 1s 0.4s cubic-bezier(0.0, 0.0, 0.0, 1.0);
+         -o-transition: height 0.4s, opacity 1s 0.4s cubic-bezier(0.0, 0.0, 0.0, 1.0);
             transition: height 0.4s, opacity 1s 0.4s cubic-bezier(0.0, 0.0, 0.0, 1.0);
 }
 
@@ -317,15 +320,15 @@ section#projectContent {
     }
     
     .dev {
-        background-image: url("../i/dev.png");
+        background-image: url("../i/dev.jpg");
     }
     
     .user {
-        background-image: url("../i/user.png");
+        background-image: url("../i/user.jpg");
     }
     
     .adventure {
-        background-image: url("../i/adventure.png");
+        background-image: url("../i/adventure.jpg");
     }
     
     section#projectContent .contentBlock h3 {
@@ -378,9 +381,10 @@ section.post {
 }
     
     section.post h2 {
-        margin: 0;
-        font-size: 18px;
-        line-height: 24px;
+        margin: 0 0 28px 0;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: right;
     }
     
     section.post .via {
@@ -399,10 +403,18 @@ section.post {
         padding: 0 0 28px;
     }
     
-    section.post p {
+    section.post article {
         font-size: 18px;
         line-height: 28px;
+    }
+    
+    section.post p,
+    section.post ul {
         margin: 0 0 28px 0;
+    }
+    
+    section.post ul {
+        padding: 0 0 0 1em;
     }
     
     section.post h3 {
@@ -419,6 +431,7 @@ section.post {
         
         -webkit-border-radius: 5px;
            -moz-border-radius: 5px;
+             -o-border-radius: 5px;
                 border-radius: 5px;
     }
     
@@ -450,6 +463,10 @@ aside {
     }
     
 /* people page styles */
+
+section#people {
+    background-color: #fff;
+}
 
 ul#teamList {
     float: left;
