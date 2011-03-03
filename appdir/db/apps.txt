@@ -14,3 +14,4 @@ http://www.paulbrunt.co.uk/steamcube/manifest.webapp
 http://www.phoboslab.org/ztype/manifest.webapp
 http://appmanifest.org/manifest.webapp
 http://www.matthewhollett.com/favimon/manifest.webapp
+http://openodyssey.mibbu.eu/manifest.php
