@@ -299,6 +299,18 @@ section#about {
     padding: 20px 0 0;
 }
 
+#video .video-js-box,
+#video .video-js-box video,
+#video img.vjs-poster  {
+    width: 940px;
+    height: 529px;
+    display: block;
+}
+
+.vjs-poster {
+    display: none;
+}
+
 #video .mainVideo {
     display: block;
 }

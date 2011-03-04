@@ -67,6 +67,13 @@ body .singleColumn.second {
 body #video.visible {
     height: 189px;
 }
+
+body #video .video-js-box,
+body #video .video-js-box video,
+body #video img.vjs-poster {
+    width: 300px;
+    height: 169px;
+}
     
 body section.post article {
     font-size: 14px;

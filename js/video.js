@@ -713,8 +713,10 @@ VideoJS.player.extend({
         this.element.style.height = (this.box.offsetHeight - this.controls.offsetHeight) + "px";
       }
     } else {
+/*
       this.box.style.width = this.width() + "px";
       this.element.style.height=this.height()+"px";
+*/
       if (this.options.controlsBelow) {
         this.element.style.height = "";
         // this.box.style.height = this.video.offsetHeight + this.controls.offsetHeight + "px";
@@ -1097,8 +1099,10 @@ VideoJS.player.newBehavior("poster", function(element){
     positionPoster: function(){
       // Only if the poster is visible
       if (!this.poster || this.poster.style.display == 'none') { return; }
+/*
       this.poster.style.height = this.height() + "px"; // Need incase controlsBelow
       this.poster.style.width = this.width() + "px"; // Could probably do 100% of box
+*/
     },
     hidePoster: function(){
       if (!this.poster) { return; }
