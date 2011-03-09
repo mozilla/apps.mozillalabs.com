@@ -15,3 +15,4 @@ http://www.phoboslab.org/ztype/manifest.webapp
 http://appmanifest.org/manifest.webapp
 http://www.matthewhollett.com/favimon/manifest.webapp
 http://openodyssey.mibbu.eu/manifest.php
+http://marblerun.at/manifest.webapp
