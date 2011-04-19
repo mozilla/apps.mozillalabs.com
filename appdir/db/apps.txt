@@ -16,3 +16,4 @@ http://appmanifest.org/manifest.webapp
 http://www.matthewhollett.com/favimon/manifest.webapp
 http://openodyssey.mibbu.eu/manifest.php
 http://marblerun.at/manifest.webapp
+http://photobooth.mozillalabs.com/rainbooth.webapp
