@@ -86,11 +86,12 @@ $(document).ready(function() {
                 }
             }
 
-            e.hover(function() {
-                var self = this;
-                $(this).unbind('mouseenter mouseleave');
-                updateStatus(self);
-           });
+            // Have to figure out how this works on mobile
+            //e.hover(function() {
+            //    var self = this;
+                $(e).unbind('mouseenter mouseleave');
+                updateStatus(e);
+            //});
             e.attr("appManifestURL", app.src_url);
             e.attr("origin", app.origin);
             e.addClass("singleColumn").appendTo(d);
