@@ -58,16 +58,14 @@ $(document).ready(function() {
                             .click(function() {
                                 $(elem).find(".button").unbind('click').removeClass("installable").html("<img class='loading' src='i/spinner.gif'>");
                                 navigator.mozApps.install(
-                                    {
-                                        url: $(elem).attr("appManifestURL"),
-                                        onsuccess: function() {
-                                            installed = null;
-                                            updateStatus(elem);
-                                        },
-                                        onerror: function(errObj) {
-                                            alert("oh no baby, business hours are over: " + errObj.code + " - " + errObj.message);
-                                            updateStatus(elem);
-                                        }
+                                    $(elem).attr("appManifestURL"), {},
+                                    function() {
+                                        installed = null;
+                                        updateStatus(elem);
+                                    },
+                                    function(errObj) {
+                                        alert("oh no baby, business hours are over: " + errObj.code + " - " + errObj.message);
+                                        updateStatus(elem);
                                     }
                                 );
                             });
