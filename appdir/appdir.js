@@ -57,7 +57,7 @@ $(document).ready(function() {
                         $(elem).find(".button").addClass("installable").html("<img src='i/download.png'> Install")
                             .click(function() {
                                 $(elem).find(".button").unbind('click').removeClass("installable").html("<img class='loading' src='i/spinner.gif'>");
-                                navigator.apps.install(
+                                navigator.mozApps.install(
                                     {
                                         url: $(elem).attr("appManifestURL"),
                                         onsuccess: function() {
@@ -77,7 +77,7 @@ $(document).ready(function() {
                 }
 
                 if (installed === null) {
-                    navigator.apps.getInstalledBy(function(i) {
+                    navigator.mozApps.getInstalledBy(function(i) {
                         installed = i;
                         checkMe(elem);
                     });
