@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mozilla Labs Apps project</title>
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+    <link rel="stylesheet" href="css/960.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="css/video-js.css" type="text/css" media="screen" title="Video JS">
+    <link rel="shortcut icon" type="image/ico" href="i/favicon.ico">
+    
+    <script type="text/javascript">
+        document.createElement("section");
+        document.createElement("article");  
+        document.createElement("footer");  
+        document.createElement("header");  
+        document.createElement("hgroup");  
+        document.createElement("nav");  
+    </script>
+    
+    <script src="js/jquery.1.5.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="js/labs.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="js/video.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript">
+    	// Add VideoJS to all video tags on the page when the DOM is ready
+    	VideoJS.setupAllWhenReady();
+	</script>
+    
+</head>
+
+<body class="apps">
+    <div id="wrapper">
+    
+        <header class="clearfix ">
+            <a class="home" href="/"><img src="i/mozillaLogo.png" alt="Mozilla"></a>
+        </header>
+        
+        <section id="about" class="clearfix ">
+            <div class="doubleColumn">
+                <h1>Mozilla Labs Apps project</h1>
+                <h2>Build Apps for the Web</h2>
+                <article class="elevator">
+                    <p>The Mozilla Labs Apps project is an initiative by  Mozilla, the non-profit Firefox developer and champion of the Web, to bring HTML5 app experiences built using Web standards and open  technologies to all your devices, wherever you are.</p>
+                </article>
+
+                <p>&nbsp;</p>
+
+                <a href="https://developer.mozilla.org/en/Apps">
+                    <h2>Find out how to build great HTML5 app experiences for the Web</h2>
+                </a>
+                <a href="">
+                    <h2>Find out more about Mozilla's App Strategy</h2>
+                </a>
+                <!--
+                <div class="videoToggle">
+                    <button class="play sans"><img src="i/video.png"> Watch the video</button>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <hr class="shadow">
+        
+        <section id="video" class="clearfix visible">
+            <div class="tripleColumn videos">
+			  <!-- Begin VideoJS -->
+			  <div class="video-js-box">
+			    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
+			    <video id="App Marketplace Video" class="video-js" width="960" height="540" controls="controls" preload="auto" poster="v/apps_new.png">
+			      <source src="v/App-Marketplace-Intro.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+			      <source src="v/App-Marketplace-Intro.webm" type='video/webm; codecs="vp8, vorbis"' />
+			      <source src="v/App-Marketplace-Intro.ogv" type='video/ogg; codecs="theora, vorbis"' />
+			      <!-- Flash Fallback. Use any flash video player here. Make sure to keep the vjs-flash-fallback class. -->
+				  <object id="flash_fallback_1" class="vjs-flash-fallback" width="640" height="390">
+					<param name="movie" value="https://www.youtube.com/v/ErqCqwkwIDE?fs=1&amp;hl=en_US&amp;rel=0"></param>
+					<param name="allowFullScreen" value="true"></param>
+					<param name="allowscriptaccess" value="always"></param>
+					<embed src="https://www.youtube.com/v/ErqCqwkwIDE?fs=1&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="940" height="529"></embed>
+			        <!-- Image Fallback. Typically the same as the poster image. -->
+			        <img src="v/apps_new.png" width="960" height="540" alt="Poster Image" title="No video playback capabilities." />
+			      </object>
+			    </video>
+			    <!-- Download links provided for devices that can't play video in the browser. -->
+			    <p class="vjs-no-video"><strong>Download Video:</strong>
+			      <a href="v/App-Marketplace-Intro.mp4">MP4</a>,
+			      <a href="v/App-Marketplace-Intro.webm">WebM</a>,
+			      <a href="v/App-Marketplace-Intro.ogv">Ogg</a><br>
+			      <!-- Support VideoJS by keeping this link. -->
+			      <a href="http://videojs.com">HTML5 Video Player</a> by VideoJS
+			    </p>
+			  </div>
+			  <!-- End VideoJS -->
+            </div>
+        </section>
+        
+        <section id="projectContent">
+            <div id="contentWrap" class="clearfix">
+            
+                <div class="contentBlock adventure clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">Reach</h3>
+                        <div class="singleColumn">
+                            <p>Create rich HTML5 app experiences that run across multiple devices and form factors (desktop, mobile, tablet, etc.)</p>
+                        </div>
+                        <div class="singleColumn">
+                            <p>&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contentBlock adventure clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">Open Technologies and Resources</h3>
+                        <div class="singleColumn">
+                            <p>Use Web standards and open technologies such as HTML5, CSS and JavaScript.</p>
+                        </div>
+                        <div class="singleColumn">
+                            <p>&nbsp;</p>
+        				</div>
+                    </div>
+                </div>
+                
+                <div class="contentBlock adventure clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">Choice and Freedom</h3>
+                        <div class="singleColumn">
+                            <p>Be in control of  every aspect of the app experience - from easy development to  distribution to direct customer relationship management.</p>
+                        </div>
+                        <div class="singleColumn">
+                            <p>&nbsp;</p>
+        				</div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <hr>
+        
+<!--
+        <section id="blog" class=" clearfix">
+            <div class="tripleColumn">
+                <h2>&mdash;Latest News <span class="caption"><a href="#">visit the blog</a></span></h2>
+            </div>
+            <div class="singleColumn post first">
+
+                <h3 class="sans blogTitle rss">App Store is Live!</h3>
+                <span class="caption">Jan 29th, 2011</span>
+                <p>The App store is live with over 50 new applications to try out (...)</p>
+            </div>
+            <div class="singleColumn post second">
+                <h3 class="sans blogTitle rss">Why an App store?</h3>
+                <span class="caption">Jan 10th, 2011</span>
+                <p>It's 2011 and and we're thinking it's time to announce our new (...)</p>
+            </div>
+            <div class="singleColumn post third">
+                <h3 class="sans blogTitle rss">An open market</h3>
+                <span class="caption">Dec 14, 2010</span>
+                <p>With the advent of the Mac App store we're wondering if there(...)</p>
+            </div>
+
+        </section>
+        
+        <hr>
+
+        
+        <section id="people" class=" clearfix">
+            <div class="tripleColumn">
+                <h2>the Web App Team</h2>
+            </div>
+            <ul id="teamList" class="clearfix">
+                <li class="team clearfix singleColumn">
+                    <span class="avatar"><img src="https://secure.gravatar.com/avatar/cc8334869c9d2a9e603017f2da805eb3?s=32"></span>
+                    <h3 class="sans">Ian Bicking</h3>
+                </li>
+                <li class="team clearfix singleColumn">
+                    <span class="avatar"><img src="i/kfox.jpg"></span>
+                    <h3 class="sans">Kevin Fox</h3>
+                </li>
+                <li class="team clearfix singleColumn">
+                    <span class="avatar"><img src="https://secure.gravatar.com/avatar/d4c91dd3004d0c0e32b8a571e7688536?s=32"></span>
+                    <h3 class="sans">Pascal Finette</h3>
+                </li>
+                <li class="team clearfix singleColumn">
+                    <span class="avatar"><img src="https://secure.gravatar.com/avatar/77e60b3143bbfeb8063914c65b2caf1f?s=32"></span>
+                    <h3 class="sans">Mike Hanson</h3>
+                </li>          
+                <li class="team clearfix singleColumn">
+                    <span class="avatar"><img src="https://secure.gravatar.com/avatar/5810c72f30b0ab202823d8c26460c39d?s=32"></span>
+                    <h3 class="sans">Lloyd Hilaiel</h3>
+                </li>
+                <li class="team clearfix singleColumn">
+                    <span class="avatar"><img src="https://secure.gravatar.com/avatar/5f586c09cc99ebe476f2805c785466c4?s=32"></span>
+                    <h3 class="sans">Dan Walkowski</h3>
+                </li>
+                <li class="team clearfix singleColumn">
+                    <span class="avatar"><img src="https://secure.gravatar.com/avatar/73f1f0fa1e8b201c59996444db8e046f?s=32"></span>
+                    <h3 class="sans">Anant Narayanan</h3>
+                </li>
+                <li class="team clearfix singleColumn">
+                    <span class="avatar"><img src="https://secure.gravatar.com/avatar/f7ead8a3ac60de8a5c61daad6ba45094?s=32"></span>
+                    <h3 class="sans">Ragavan Srinivasan</h3>
+                </li>
+            </ul>
+        </section>
+        -->
+    </div> <!-- wrapper -->
+    
+    <footer class="clearfix sans">
+        <ul>
+            <li><a href="http://groups.google.com/group/mozilla-labs">Forum</a></li>
+            <li><a href="http://www.mozilla.com/en-US/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="http://www.mozilla.com/en-US/about/legal.html">Legal Notices</a></li>
+        </ul>
+        <div class="singleColumn">
+            <p>Copyright &copy; 2011 Mozilla. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>
