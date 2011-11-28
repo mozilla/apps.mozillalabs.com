@@ -88,6 +88,12 @@ hr.shadow {
     display: block;
 }
 
+.item {
+    font-size: 16px;
+    line-height: 21px;
+    padding: 10px 0px 0px 0px;
+}
+
 .smallelevator {
     font-size: 16px;
     line-height: 21px;
