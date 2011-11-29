@@ -94,6 +94,10 @@ hr.shadow {
     padding: 10px 0px 0px 0px;
 }
 
+p.item a {
+    color: black;
+}
+
 .smallelevator {
     font-size: 16px;
     line-height: 21px;
