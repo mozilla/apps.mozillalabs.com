@@ -57,28 +57,53 @@ $(document).ready(function() {
                         $(elem).find(".button").addClass("installable").html("<img src='i/download.png'> Install")
                             .click(function() {
                                 $(elem).find(".button").unbind('click').removeClass("installable").html("<img class='loading' src='i/spinner.gif'>");
-                                navigator.mozApps.install(
-                                    $(elem).attr("appManifestURL"), {},
-                                    function() {
-                                        installed = null;
+                                var manifestURL = $(elem).attr("appManifestURL");
+                                if (navigator.mozApps.getInstalled) {
+                                    // We're using the new API
+                                    var pending = navigator.mozApps.install(manifestURL);
+                                    pending.onsuccess = function () {
+                                      installed = null;
+                                      updateStatus(elem);
+                                    };
+                                    pending.onerror = function () {
+                                      if (this.error != 'DENIED') {
+                                        alert("Error in installation: " + this.error);
+                                      }
+                                      updateStatus(elem);
+                                    };
+                                } else {
+                                    // Old API
+                                    navigator.mozApps.install(
+                                      manifestURL, {},
+                                      function() {
+                                          installed = null;
+                                          updateStatus(elem);
+                                      },
+                                      function(errObj) {
+                                        alert("Error in installation: " + errObj.code + " - " + errObj.message);
                                         updateStatus(elem);
-                                    },
-                                    function(errObj) {
-                                        alert("oh no baby, business hours are over: " + errObj.code + " - " + errObj.message);
-                                        updateStatus(elem);
-                                    }
-                                );
+                                      }
+                                    );
+                                }
                             });
                     } else {
-                        $(elem).find(".button").addClass("installed").html("&#x2714; Installed!")
+                        $(elem).find(".button").addClass("installed").html("&#x2714; Installed!");
                     }
                 }
 
                 if (installed === null) {
-                    navigator.mozApps.getInstalledBy(function(i) {
-                        installed = i;
-                        checkMe(elem);
-                    });
+                    if (navigator.mozApps.getInstalled) {
+                        var pending = navigator.mozApps.getInstalled();
+                        pending.onsuccess = function () {
+                            installed = this.result;
+                            checkMe(elem);
+                        };
+                    } else {
+                        navigator.mozApps.getInstalledBy(function(i) {
+                            installed = i;
+                            checkMe(elem);
+                        });
+                    }
                 } else {
                     checkMe(elem);
                 }
