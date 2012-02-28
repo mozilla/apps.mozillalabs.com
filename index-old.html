@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mozilla Labs Apps project</title>
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="css/video-js.css" type="text/css" media="screen" title="Video JS">
+    <link rel="shortcut icon" type="image/ico" href="i/favicon.ico">
+    
+    <script type="text/javascript">
+        document.createElement("section");
+        document.createElement("article");  
+        document.createElement("footer");  
+        document.createElement("header");  
+        document.createElement("hgroup");  
+        document.createElement("nav");  
+    </script>
+    
+    <script src="js/jquery.1.5.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="js/labs.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="js/video.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript">
+    	// Add VideoJS to all video tags on the page when the DOM is ready
+    	VideoJS.setupAllWhenReady();
+	</script>
+    
+</head>
+
+<body class="apps">
+    <div id="wrapper">
+    
+        <header class="clearfix ">
+            <a class="home" href="/"><img src="i/mozillaLogo.png" alt="Mozilla"></a>
+        </header>
+        
+        <section id="about" class="clearfix ">
+            <div class="doubleColumn">
+                <h1>Mozilla Labs Apps project</h1>
+                <h2>Build Apps for the Web</h2>
+                <article class="elevator">
+                    <p>The Mozilla Labs Apps project is an initiative by  Mozilla, the non-profit Firefox developer and champion of the Web, to bring HTML5 app experiences built using Web standards and open  technologies to all your devices, wherever you are.</p>
+                </article>
+                <!--
+                <div class="videoToggle">
+                    <button class="play sans"><img src="i/video.png"> Watch the video</button>
+                </div>
+                -->
+            </div>
+        </section>
+
+        <hr class="shadow">
+        
+        <article class="smallelevator">
+            <p>The Mozilla Labs Apps project is a big part of realizing the vision that the Web is the platform of the future. It bring apps to all your devices and enables developers to build amazing experiences using the technologies they already use and love.</p>
+        </article>
+
+        <h2 class="subtitle">Mozilla's App strategy offers:</h2>
+
+        <section id="projectContent">
+            <div id="contentWrap" class="clearfix">
+            
+                <div class="contentBlock console clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">Reach</h3>
+                        <div class="singleColumn">
+                            <p class="description">Create rich HTML5 app experiences that run across multiple devices and form factors (desktop, mobile, tablet, etc.)</p>
+                        </div>
+                        <div class="singleColumn">
+                            <p>&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contentBlock console clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">Open Technologies and Resources</h3>
+                        <div class="singleColumn">
+                            <p class="description">Use Web standards and open technologies such as HTML5, CSS and JavaScript.</p>
+                        </div>
+                        <div class="singleColumn">
+                            <p>&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contentBlock console clearfix">
+                    <div class="contentBlockWrap">
+                        <h3 class="sans">Choice and Freedom</h3>
+                        <div class="singleColumn">
+                            <p class="description">Be in control of  every aspect of the app experience - from easy development to  distribution to direct customer relationship management.</p>
+                        </div>
+                        <div class="singleColumn">
+                            <p>&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="video" class="clearfix visible">
+            <div class="videos">
+              <!-- Begin VideoJS -->
+              <div class="video-js-box">
+                <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
+                <video id="App Marketplace Video" class="video-js" controls="controls" preload="auto" poster="v/apps_new.png">
+                  <source src="v/App-Marketplace-Intro.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+                  <source src="v/App-Marketplace-Intro.webm" type='video/webm; codecs="vp8, vorbis"' />
+                  <source src="v/App-Marketplace-Intro.ogv" type='video/ogg; codecs="theora, vorbis"' />
+                  <!-- Flash Fallback. Use any flash video player here. Make sure to keep the vjs-flash-fallback class. -->
+                  <object id="flash_fallback_1" class="vjs-flash-fallback">
+                    <param name="movie" value="https://www.youtube.com/v/T-QIYQtZpOw?fs=1&amp;hl=en_US&amp;rel=0"></param>
+                    <param name="allowFullScreen" value="true"></param>
+                    <param name="allowscriptaccess" value="always"></param>
+                    <embed src="https://www.youtube.com/v/T-QIYQtZpOw?fs=1&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"></embed>
+                    <!-- Image Fallback. Typically the same as the poster image. -->
+                    <img src="v/apps_new.png" alt="Poster Image" title="No video playback capabilities." />
+                  </object>
+                </video>
+                <!-- Download links provided for devices that can't play video in the browser. -->
+                <p class="vjs-no-video"><strong>Download Video:</strong>
+                  <a href="v/App-Marketplace-Intro.mp4">MP4</a>,
+                  <a href="v/App-Marketplace-Intro.webm">WebM</a>,
+                  <a href="v/App-Marketplace-Intro.ogv">Ogg</a><br>
+                  <!-- Support VideoJS by keeping this link. -->
+                  <a href="http://videojs.com">HTML5 Video Player</a> by VideoJS
+                </p>
+              </div>
+              <!-- End VideoJS -->
+            </div>
+
+            <div class="singleColumn cta">
+                <h2>Learn More</h2>
+                <p class="item"><a href="https://developer.mozilla.org/en/Apps">How to build great HTML5 app experiences for the Web</a></p>
+                <p class="item"><a href="https://hacks.mozilla.org/2011/12/mozilla-labs-apps-preview/">Read the apps project blog post</a></p>
+                <p class="item"><a href="https://wiki.mozilla.org/Mozilla_Labs_Apps_Project_FAQ">Apps Project FAQ</a></p>
+                <p class="item"><a href="https://developer.mozilla.org/en/Apps/Release_notes">Apps Developer Preview Release Notes</a></p>
+                <br/>
+                <h2>Try It Out</h2>
+                <p class="item"><a href="https://addons.mozilla.org/en-US/firefox/addon/app-runtime/">Install the Mozilla Labs App Runtime for Firefox</a></p>
+                <p class="item"><a href="https://apps.mozillalabs.com/bin/Soup-0.1.apk">Install the Mozilla Labs App Runtime for Android</a></p>
+            </div>
+
+        </section>
+
+        <hr>
+
+    </div> <!-- wrapper -->
+
+    <footer class="clearfix sans">
+        <ul>
+            <li><a href="http://groups.google.com/group/mozilla-labs">Forum</a></li>
+            <li><a href="http://www.mozilla.com/en-US/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="http://www.mozilla.com/en-US/about/legal.html">Legal Notices</a></li>
+        </ul>
+        <div class="singleColumn">
+            <p>Copyright &copy; 2011 Mozilla. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>
