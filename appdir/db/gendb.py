@@ -22,8 +22,8 @@ while line:
         item["origin"] = origin
         item["manifest"] = json.loads(manifest)
         db.append(item)
-    except (ValueError, RuntimeError) as e:
-        print >> sys.stderr, "WARNING: Can't read manifest, skipping '%s'" % url
+    except (ValueError, RuntimeError, urllib2.HTTPError, urllib2.URLError) as e:
+        print >> sys.stderr, "WARNING: Can't read manifest (%s), skipping %r" % (e, url)
     line = sys.stdin.readline()
 
 # re-sort by name
