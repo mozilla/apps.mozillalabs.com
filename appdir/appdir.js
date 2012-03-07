@@ -10,10 +10,19 @@ function extractIcon(manifest, origin) {
     return iconURL;
 }
 
+function getDbUrl() {
+    var match = /db=([^&=]*)/.exec(location.href + '');
+    if (match) {
+        return decodeURIComponent(match[1]);
+    } else {
+        return "db/apps.json";
+    }
+}
+
 $(document).ready(function() {
     var installed = null;
 
-    $.getJSON( "db/apps.json", function(contents) {
+    $.getJSON( getDbUrl(), function(contents) {
         // whee!  we got our app database.  let's rip through and add all them apps to the
         // directory
         var d = $("#contentWrap");
